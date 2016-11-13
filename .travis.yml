@@ -1,0 +1,15 @@
+language: cpp
+complier: g++
+before-install:
+    - chmod +x .build.sh
+addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+        packages:
+            - g++-4.9
+            - libboost-dev
+            - libboost-system-dev
+install:
+    - CC=gcc-4.9 CXX=g++-4.9
+script: ./.build.sh
