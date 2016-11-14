@@ -1,4 +1,4 @@
-# MIST (Enigma)
+# MIST (Enigma) [![Build Status](https://travis-ci.org/Ahmad-Bamba/MIST-Computing-Library.svg?branch=master)](https://travis-ci.org/Ahmad-Bamba/MIST-Computing-Library)
 ## Home of MIST Computing. Work in progress.
 ## Currently working on: Enigma.Crimson (v0.0.1)
 
