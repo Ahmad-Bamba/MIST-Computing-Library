@@ -5,4 +5,4 @@ if [ ! -d "$DIRECTORY" ]; then
     tar -xvf "download?source=files"
 fi
 echo "Building..."
-g++ -std=c++1y -Iasio-1.10.8/include/ -c -lpthread src/*.cpp -o a.o
+g++ -std=c++0x -Iasio-1.10.8/include/ -c -lpthread src/*.cpp -o a.o
