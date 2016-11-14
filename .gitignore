@@ -31,5 +31,8 @@
 #asio
 asio-*/*
 
+#tarballs
+*.tar.*
+
 #Dumbness
 download?source=files
