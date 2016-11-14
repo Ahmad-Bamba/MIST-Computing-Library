@@ -45,6 +45,10 @@ Debug/*
 install/*
 x64/*
 
+#tarballs
+*.tar.*
+>>>>>>> 9bdffd53dae5ca5ec858bdc215c4699ef4d0ec51
+
 #Dumbness
 download?source=files
 main.cpp
