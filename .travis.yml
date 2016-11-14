@@ -1,5 +1,6 @@
 language: cpp
 complier: g++
+sudo: required
 before-install:
     - chmod +x .build.sh
 addons:
