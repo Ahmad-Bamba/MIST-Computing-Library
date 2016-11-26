@@ -38,7 +38,7 @@ protobuf-master/*
 #projectfiles
 Debug/*
 *.sln
-*.VC.db
+*.VC.*
 *.vcxproj
 *.vcxproj.*
 .vs/*
@@ -47,7 +47,6 @@ x64/*
 
 #tarballs
 *.tar.*
->>>>>>> 9bdffd53dae5ca5ec858bdc215c4699ef4d0ec51
 
 #Dumbness
 download?source=files
