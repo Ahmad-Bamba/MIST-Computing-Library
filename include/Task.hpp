@@ -20,6 +20,8 @@ namespace MIST {
             this->fn = fn;
         }
 
+		void send(T message);
+
         ~Task() {
             delete id;
             delete fn;
