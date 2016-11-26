@@ -12,23 +12,23 @@
 namespace MIST {
     class MIST {
     private:
-		struct computerHardware
-		{
-			unsigned long allowedThreads;
-			unsigned long long allowedMemory;
-			std::string name;
-			bool enableHT;
-		};
+	struct computerHardware
+	{
+	    unsigned long allowedThreads;
+	    unsigned long long allowedMemory;
+	    std::string name;
+	    bool enableHT;
+	};
 
-		struct MISTHost
-		{
-			bool isLocal; //is it this computer?
-			std::string address; //what address is it? "local" for if it's local
-			computerHardware computer; //What hardware does it have?
-		};
+	struct MISTHost
+	{
+	    bool isLocal; //is it this computer?
+	    std::string address; //what address is it? "local" for if it's local
+            computerHardware computer; //What hardware does it have?
+	};
 
-		computerHardware thisComputer; //this computer
-		MISTHost local; //this computer
+	computerHardware thisComputer; //this computer
+	MISTHost local; //this computer
 
         std::vector<MISTHost> Hosts;
         std::shared_ptr<Scheduler> scheduler;
@@ -46,24 +46,24 @@ namespace MIST {
 
         ~MIST() = default;
 		//LOCAL INITIALIZATION
-		void InitComputer(unsigned long threads = 1, unsigned long long memory = 2048, std::string name = "Unnamed, Unloved Computer", std::string address = "0.0.0.0", bool enableHT = false) {
+	void InitComputer(unsigned long threads = 1, unsigned long long memory = 2048, std::string name = "Unnamed, Unloved Computer", std::string address = "0.0.0.0", bool enableHT = false) {
 
-		}
-		void setThreads(unsigned long threads) {
+	}
+	void setThreads(unsigned long threads) {
 
-		}
-		void setMemory(unsigned long long memory) {
+	}
+	void setMemory(unsigned long long memory) {
 
-		}
-		void enableHT(bool enableHT) {
+	}
+	void enableHT(bool enableHT) {
 
-		}
-		void setName(std::string computerName) {
+	}
+	void setName(std::string computerName) {
 
-		}
-		void setAddress(std::string address) {
+	}
+	void setAddress(std::string address) {
 
-		}
+	}
 
 		//NETWORK INITIALIZATION
         void addMachine(std::string IP) {
