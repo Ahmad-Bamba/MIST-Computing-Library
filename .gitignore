@@ -38,7 +38,7 @@ protobuf-master/*
 #projectfiles
 Debug/*
 *.sln
-*.VC.db
+*.VC.*
 *.vcxproj
 *.vcxproj.*
 .vs/*
