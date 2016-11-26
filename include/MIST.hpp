@@ -12,7 +12,7 @@
 namespace MIST {
     class MIST {
     private:
-		struct computerHardware
+        struct computerHardware
 		{
 			unsigned long allowedThreads;
 			unsigned long long allowedMemory;
@@ -45,6 +45,7 @@ namespace MIST {
 
         ~MIST() = default;
 		//LOCAL INITIALIZATION
+
 		void InitComputer(unsigned long threads = 1, unsigned long long memory = 2048, std::string name = "Unnamed, Unloved Computer", std::string address = "0.0.0.0", bool enableHT = false) {
             thisComputer.isLocal = true;
             thisComputer.address = "local";
