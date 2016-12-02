@@ -28,21 +28,22 @@ namespace MIST {
         }
 
         ~MIST() = default;
-	//LOCAL INITIALIZATION
-	void InitComputer(unsigned long threads = 1, unsigned long long memory = 2048, std::string name = "UnnamedComputer UnlovedComputer", std::string address = "0.0.0.0", bool enableHT = false);
-	void setThreads(unsigned long threads);
-	void setMemory(unsigned long long memory);
-	void enableHT(bool enableHT);
-	void setName(std::string computerName);
-	void setAddress(std::string address);
+        
+    	//LOCAL INITIALIZATION
+    	void InitComputer(unsigned long threads = 1, unsigned long long memory = 2048, std::string name = "UnnamedComputer UnlovedComputer", std::string address = "0.0.0.0", bool enableHT = false);
+    	void setThreads(unsigned long threads);
+    	void setMemory(unsigned long long memory);
+    	void enableHT(bool enableHT);
+    	void setName(std::string computerName);
+    	void setAddress(std::string address);
 
-	//NETWORK INITIALIZATION
-        void addMachine(std::string IP) {
-            IPs.push_back(IP);
-        }
+    	//NETWORK INITIALIZATION
+            void addMachine(std::string IP) {
+                IPs.push_back(IP);
+            }
 
-  /*      void sendTask(std::shared_ptr<Task<auto>> task) {
-            send(task.getID());
-        }*/
-    };
+      /*      void sendTask(std::shared_ptr<Task<auto>> task) {
+                send(task.getID());
+            }*/
+        };
 }
