@@ -1308,18 +1308,23 @@ class Task : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::std::string* release_task_name();
   void set_allocated_task_name(::std::string* task_name);
 
-  // optional int64 task_id = 2;
+  // optional string task_id = 2;
   void clear_task_id();
   static const int kTaskIdFieldNumber = 2;
-  ::google::protobuf::int64 task_id() const;
-  void set_task_id(::google::protobuf::int64 value);
+  const ::std::string& task_id() const;
+  void set_task_id(const ::std::string& value);
+  void set_task_id(const char* value);
+  void set_task_id(const char* value, size_t size);
+  ::std::string* mutable_task_id();
+  ::std::string* release_task_id();
+  void set_allocated_task_id(::std::string* task_id);
 
   // @@protoc_insertion_point(class_scope:ProtobufMIST.Task)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr task_name_;
-  ::google::protobuf::int64 task_id_;
+  ::google::protobuf::internal::ArenaStringPtr task_id_;
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
@@ -2207,18 +2212,48 @@ inline void Task::set_allocated_task_name(::std::string* task_name) {
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Task.task_name)
 }
 
-// optional int64 task_id = 2;
+// optional string task_id = 2;
 inline void Task::clear_task_id() {
-  task_id_ = GOOGLE_LONGLONG(0);
+  task_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::int64 Task::task_id() const {
+inline const ::std::string& Task::task_id() const {
   // @@protoc_insertion_point(field_get:ProtobufMIST.Task.task_id)
-  return task_id_;
+  return task_id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void Task::set_task_id(::google::protobuf::int64 value) {
+inline void Task::set_task_id(const ::std::string& value) {
   
-  task_id_ = value;
+  task_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:ProtobufMIST.Task.task_id)
+}
+inline void Task::set_task_id(const char* value) {
+  
+  task_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ProtobufMIST.Task.task_id)
+}
+inline void Task::set_task_id(const char* value, size_t size) {
+  
+  task_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ProtobufMIST.Task.task_id)
+}
+inline ::std::string* Task::mutable_task_id() {
+  
+  // @@protoc_insertion_point(field_mutable:ProtobufMIST.Task.task_id)
+  return task_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Task::release_task_id() {
+  // @@protoc_insertion_point(field_release:ProtobufMIST.Task.task_id)
+  
+  return task_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Task::set_allocated_task_id(::std::string* task_id) {
+  if (task_id != NULL) {
+    
+  } else {
+    
+  }
+  task_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), task_id);
+  // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Task.task_id)
 }
 
 inline const Task* Task::internal_default_instance() {
