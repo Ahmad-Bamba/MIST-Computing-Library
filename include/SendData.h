@@ -1,7 +1,7 @@
 #pragma once
 #include "MIST_Internal.hpp"
-#include <vector>
 #include <chrono>
+#include <vector>
 #include <atomic>
 
 class SendData
@@ -10,7 +10,7 @@ class SendData
     //Each call to Send will create a new detached thread on which data will be sent (so large data transfers don't cause stutters)
 {
 private:
-    bool clean_up_needed;
+    std::atomic<bool> clean_up_needed;
     struct Job
     {
         bool isComplete;
@@ -37,14 +37,14 @@ private:
                 if (SendJobs.at(iterator).isComplete)
                 {
                     delete SendJobs[iterator].job; //delete thread and associated memory
-                    SendJobs.erase(SendJobs.begin() + iterator); //if Thread is complete, delete it's object
+                    SendJobs.erase(SendJobs.begin()+iterator); //if Thread is complete, delete it's object
                     number_of_send_jobs--;
                 }
             } else {
                 if (SendJobs.at(iterator).isComplete)
                 {
                     delete SendJobs[iterator].job; //delete thread and associated memory
-                    SendJobs.erase(SendJobs.begin() + iterator); //if Thread is complete, delete it's object
+                    SendJobs.erase(SendJobs.begin()+iterator); //if Thread is complete, delete it's object
                     number_of_send_jobs--;
                 }
                 iterator++;
@@ -59,7 +59,7 @@ public:
         thread_cleanup_loop.detach();
     };
     ~SendData() {
-
+        
     };
 
     inline void Send(std::string data, std::string IP){
@@ -71,4 +71,9 @@ public:
         t->detach();
         number_of_send_jobs++;
     }; //creates new instance of send_[data type] on detached thread
+    inline void stop()
+    {
+        clean_up_needed = false;
+        std::this_thread::sleep_for(std::chrono::milliseconds(500)); //jank, but it lets us exit safely, will have better solution when science fair isn't a pressing concern.
+    };
 };
