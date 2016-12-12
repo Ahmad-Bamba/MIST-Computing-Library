@@ -18,12 +18,12 @@ namespace MIST {
     	{
     	    unsigned long allowedThreads;
     	    unsigned long long allowedMemory;
-    	    std::string name;
     	    bool enableHT;
     	};
 
     	struct MISTHost
     	{
+            std::string name;
     	    bool isLocal; //is it this computer?
     	    std::string address; //what address is it? "local" for if it's local
             computerHardware computer; //What hardware does it have?
@@ -31,7 +31,6 @@ namespace MIST {
 
     	computerHardware thisComputer; //this computer
     	MISTHost local; //this computer
->>>>>>> 478b45c30eef5b39c1b83abd6d126782a0d9f31c
 
         std::vector<MISTHost> Hosts;
         std::shared_ptr<Scheduler> scheduler;
@@ -48,31 +47,30 @@ namespace MIST {
         }
 
         ~MIST() = default;
-<<<<<<< HEAD
 		//LOCAL INITIALIZATION
 
 		void InitComputer(unsigned long threads = 1, unsigned long long memory = 2048, std::string name = "Unnamed, Unloved Computer", std::string address = "0.0.0.0", bool enableHT = false) {
-            thisComputer.isLocal = true;
-            thisComputer.address = "local";
-            thisComputer.computer.allowedMemory = memory;
-            thisComputer.computer.allowedThreads = threads;
-            thisComputer.name = name;
-            thisComputer.computer.enableHT = enableHT;
+            local.isLocal = true;
+            local.address = "local";
+            local.computer.allowedMemory = memory;
+            local.computer.allowedThreads = threads;
+            local.name = name;
+            local.computer.enableHT = enableHT;
 		}
 		void setThreads(unsigned long threads) {
-            thisComputer.computer.allowedThreads = threads;
+            local.computer.allowedThreads = threads;
 		}
 		void setMemory(unsigned long long memory) {
-            thisComputer.computer.allowedMemory = memory;
+            local.computer.allowedMemory = memory;
 		}
 		void enableHT(bool enableHT) {
-            thisComputer.computer.enableHT = enableHT;
+            local.computer.enableHT = enableHT;
 		}
 		void setName(std::string computerName) {
-            thisComputer.name = computerName;
+            local.name = computerName;
 		}
 		void setAddress(std::string address) {
-            thisComputer.address = address;
+            local.address = address;
 		}
 
 		//NETWORK INITIALIZATION
@@ -83,41 +81,6 @@ namespace MIST {
   /*    void sendTask(std::shared_ptr<Task<auto>> task) {
            send(task.getID());
         }*/
-=======
 
-    	//LOCAL INITIALIZATION
-    	void InitComputer(unsigned long threads = 1, unsigned long long memory = 2048, std::string name = "UnnamedComputer UnlovedComputer", std::string address = "0.0.0.0", bool enableHT = false) {
-
-        }
-
-    	void setThreads(unsigned long threads) {
-
-        }
-
-    	void setMemory(unsigned long long memory) {
-
-        }
-
-    	void enableHT(bool enableHT) {
-
-        }
-
-    	void setName(std::string computerName) {
-
-        }
-
-    	void setAddress(std::string address) {
-
-        }
-
-      //NETWORK INITIALIZATION
-      void addMachine(std::string IP) {
-          //IPs.push_back(IP);
-      }
-
-      /*void sendTask(std::shared_ptr<Task<auto>> task) {
-          send(task.getID());
-      }*/
->>>>>>> 478b45c30eef5b39c1b83abd6d126782a0d9f31c
     };
 }
