@@ -40,7 +40,7 @@ private:
                     SendJobs.erase(SendJobs.begin()+iterator); //if Thread is complete, delete it's object
                     number_of_send_jobs--;
                 }
-            } else {
+            } else if(iterator < number_of_send_jobs){
                 if (SendJobs.at(iterator).isComplete)
                 {
                     delete SendJobs[iterator].job; //delete thread and associated memory
@@ -57,12 +57,15 @@ public:
         clean_up_needed = true;
         std::thread thread_cleanup_loop(&SendData::thread_cleanup_loop, this);
         thread_cleanup_loop.detach();
-    };
+    }; //creates at minimum one thread (for cleanup_loop)
     ~SendData() {
         
     };
 
     inline void Send(std::string data, std::string IP){
+        size_t size;
+        size = data.size();
+        data.insert(data.begin(), size);
         std::thread * t = new std::thread(&SendData::send_string, this, data, IP, number_of_send_jobs+1);
         Job j;
         j.isComplete = false;
@@ -74,6 +77,6 @@ public:
     inline void stop()
     {
         clean_up_needed = false;
-        std::this_thread::sleep_for(std::chrono::milliseconds(500)); //jank, but it lets us exit safely, will have better solution when science fair isn't a pressing concern.
+        std::this_thread::sleep_for(std::chrono::milliseconds(500)); //jank, but it lets us exit safely (allows thread_cleanup_loop to exit), will have better solution when science fair isn't a pressing concern.
     };
 };
