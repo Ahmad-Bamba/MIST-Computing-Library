@@ -18,7 +18,12 @@ public:
         Start();
     }
 
-    //virtual ~Scheduler() = 0;
+    ~Scheduler() {
+        //Make sure threads are close
+        Stop();
+        //empty task_queue to prevent evil raw pointers from ruining program
+        task_queue.empty();
+    }
 
     void updateTaskVector(std::string id, MIST_taskfunc fn) {
         task_queue.push_back(new MIST::Task(id, fn));
@@ -43,9 +48,9 @@ public:
              * if found:
              *      if id_valid(message):
              *          for task in task_queue:
-             *          if task.id == message:
-             *              t = std::thread(task.run)
-             *              t.join()
+             *              if task.id == message:
+             *                  t = std::thread(task.run)
+             *                  t.join()
              */
         }
     }
