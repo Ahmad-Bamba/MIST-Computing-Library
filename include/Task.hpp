@@ -22,9 +22,9 @@ namespace MIST {
 
 		//void send(std::string message);
 
-        ~Task() {
+        /*~Task() {
             delete id;
-        }
+        }*/
 
         std::string getID() {
             return id;
