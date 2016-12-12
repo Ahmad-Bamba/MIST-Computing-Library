@@ -5,5 +5,5 @@ if [ ! -d "$DIRECTORY" ]; then
     tar -xvf "asio-1.10.8.tar.gz"
 fi
 printf "\nBuilding...\n"
-g++ -std=c++1y -Iasio-1.10.8/include/ -Iinclude/ -c -lpthread src/*.cpp -o a.o
+g++ -std=c++1y -Iasio-1.10.8/include/ -Iinclude/ -Iprotobuf_files -c -lpthread src/*.cpp -lprotobuf -o a.o
 printf "Exited with code $?\n"
