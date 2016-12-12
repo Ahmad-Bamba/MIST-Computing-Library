@@ -7,5 +7,5 @@ private:
 
 public:
     Scheduler() = default;
-    ~Scheduler() = default;
+    //virtual ~Scheduler() = 0;
 };

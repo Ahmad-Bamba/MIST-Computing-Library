@@ -32,8 +32,9 @@
 asio-*/*
 
 #protobuf
-*.proto
+*.pb.*
 protobuf-master/*
+protobuf_files/*.pb.*
 
 #projectfiles
 Debug/*
@@ -51,3 +52,4 @@ x64/*
 #Dumbness
 download?source=files
 main.cpp
+*/threads*

@@ -11,6 +11,13 @@ addons:
             - g++-4.9
             - libboost-dev
             - libboost-system-dev
+            - git
+            - autoconf
+            - automake
+            - libtool
+            - curl
+            - make
+            - unzip
 install:
     - CC=gcc-4.9 CXX=g++-4.9
 script: ./.build.sh
