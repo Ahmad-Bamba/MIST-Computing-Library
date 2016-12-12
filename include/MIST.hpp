@@ -3,6 +3,7 @@
 #include "MIST_Internal.hpp"
 #include "Scheduler.hpp"
 #include "Task.hpp"
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,7 +25,7 @@ namespace MIST {
     	{
     	    bool isLocal; //is it this computer?
     	    std::string address; //what address is it? "local" for if it's local
-                computerHardware computer; //What hardware does it have?
+            computerHardware computer; //What hardware does it have?
     	};
 
     	computerHardware thisComputer; //this computer
@@ -49,27 +50,27 @@ namespace MIST {
     	//LOCAL INITIALIZATION
     	void InitComputer(unsigned long threads = 1, unsigned long long memory = 2048, std::string name = "UnnamedComputer UnlovedComputer", std::string address = "0.0.0.0", bool enableHT = false) {
 
-      }
+        }
 
     	void setThreads(unsigned long threads) {
 
-      }
+        }
 
     	void setMemory(unsigned long long memory) {
 
-      }
+        }
 
     	void enableHT(bool enableHT) {
 
-      }
+        }
 
     	void setName(std::string computerName) {
 
-      }
+        }
 
     	void setAddress(std::string address) {
 
-      }
+        }
 
       //NETWORK INITIALIZATION
       void addMachine(std::string IP) {
