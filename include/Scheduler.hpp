@@ -61,6 +61,7 @@ public:
     }
 
     void Stop() {
+        this->running = false;
         delete checker;
     }
 };
