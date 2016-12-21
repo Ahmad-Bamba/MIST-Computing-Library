@@ -1,6 +1,7 @@
 #pragma once
 
 #include <MIST_Internal.hpp>
+#include <ReceiveData.hpp>
 #include <Task.hpp>
 #include <vector>
 #include <memory>
