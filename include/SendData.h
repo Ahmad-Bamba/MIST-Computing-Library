@@ -1,8 +1,13 @@
 #pragma once
 #include "MIST_Internal.hpp"
+#include <boost/bind.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/enable_shared_from_this.hpp>
+#include <asio.hpp>
 #include <chrono>
 #include <vector>
 #include <atomic>
+#include <string>
 
 class SendData
     //HOW TO USE: Create SendData object
@@ -10,6 +15,15 @@ class SendData
     //Each call to Send will create a new detached thread on which data will be sent (so large data transfers don't cause stutters)
 {
 private:
+
+    asio::io_service io;
+
+    asio::ip::tcp::resolver resolver;
+
+    //asio::ip::tcp::resolver::query query;
+
+    //asio::ip::tcp::socket socket;
+
     std::atomic<bool> clean_up_needed;
     struct Job
     {
@@ -21,8 +35,13 @@ private:
     std::atomic<unsigned long> number_of_send_jobs; //keeps track of numbers of long
 
     inline void send_string(std::string dataToSend, std::string IP, unsigned long id) {
-        std::cout << dataToSend << std::endl;
-        std::cout << IP << std::endl;
+        asio::ip::tcp::resolver::query query(IP.c_str(), std::to_string(id));
+        asio::ip::tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
+
+        asio::ip::tcp::socket socket(io);
+        asio::connect(socket, endpoint_iterator);
+        asio::error_code ignored_error;
+        asio::write(socket, asio::buffer(dataToSend.c_str(), dataToSend.length()), ignored_error);
         SendJobs[id].isComplete = true;
     }; //actually sends the string
 
@@ -53,10 +72,12 @@ private:
     }; //cleans up/deletes threads once they're done with their jobs
 
 public:
-    SendData() {
-        clean_up_needed = true;
-        std::thread thread_cleanup_loop(&SendData::thread_cleanup_loop, this);
-        thread_cleanup_loop.detach();
+    SendData(unsigned port)
+        : resolver(io)
+    {
+       // clean_up_needed = true;
+       // std::thread thread_cleanup_loop(&SendData::thread_cleanup_loop, this);
+        //thread_cleanup_loop.detach();
     }; //creates at minimum one thread (for cleanup_loop)
     ~SendData() {
         
