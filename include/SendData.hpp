@@ -9,24 +9,22 @@
 #include <atomic>
 #include <string>
 
-class SendData
+typedef unsigned short ushort;
+
+class SendData {
     //HOW TO USE: Create SendData object
     //Any time you want to send data use SendData.send([data],[IP]);
-    //Each call to Send will create a new detached thread on which data will be sent (so large data transfers don't cause stutters)
-{
+    //Each call to Send will create a new detached thread on which data will be
+    //sent (so large data transfers don't cause stutters)
 private:
-
     asio::io_service io;
-
     asio::ip::tcp::resolver resolver;
-
     //asio::ip::tcp::resolver::query query;
-
     //asio::ip::tcp::socket socket;
 
     std::atomic<bool> clean_up_needed;
-    struct Job
-    {
+
+    struct Job {
         bool isComplete;
         std::thread* job;
     };
@@ -34,8 +32,8 @@ private:
     std::vector<Job> SendJobs; //true = finished, false = still sending
     std::atomic<unsigned long> number_of_send_jobs; //keeps track of numbers of long
 
-    inline void send_string(std::string dataToSend, std::string IP, unsigned long id) {
-        asio::ip::tcp::resolver::query query(IP.c_str(), std::to_string(id));
+    inline void send_string(std::string dataToSend, std::string IP, ushort port = 8008, unsigned long id = 0) {
+        asio::ip::tcp::resolver::query query(tcp::v4(), IP.c_str(), port);
         asio::ip::tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
 
         asio::ip::tcp::socket socket(io);
@@ -47,7 +45,7 @@ private:
 
     void thread_cleanup_loop() {
         int iterator = 0;
-        
+
         while (clean_up_needed)
         {
             if (iterator >= number_of_send_jobs) {
@@ -67,23 +65,20 @@ private:
                     number_of_send_jobs--;
                 }
                 iterator++;
-            }   
+            }
         }
     }; //cleans up/deletes threads once they're done with their jobs
 
 public:
     SendData(unsigned port)
-        : resolver(io)
-    {
+        : resolver(io) {
        // clean_up_needed = true;
        // std::thread thread_cleanup_loop(&SendData::thread_cleanup_loop, this);
         //thread_cleanup_loop.detach();
     }; //creates at minimum one thread (for cleanup_loop)
-    ~SendData() {
-        
-    };
+    ~SendData() { };
 
-    inline void Send(std::string data, std::string IP){
+    inline void Send(std::string data, std::string IP) {
         size_t size;
         size = data.size();
         data.insert(data.begin(), size);
@@ -95,8 +90,8 @@ public:
         t->detach();
         number_of_send_jobs++;
     }; //creates new instance of send_[data type] on detached thread
-    inline void stop()
-    {
+
+    inline void stop() {
         clean_up_needed = false;
         std::this_thread::sleep_for(std::chrono::milliseconds(500)); //jank, but it lets us exit safely (allows thread_cleanup_loop to exit), will have better solution when science fair isn't a pressing concern.
     };
