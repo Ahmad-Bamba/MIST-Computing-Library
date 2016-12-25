@@ -1,6 +1,7 @@
 #pragma once
 
 #include <MIST_Internal.hpp>
+#include <string>
 
 /*
  * Tasks are to be defined locally. Pass a function you want to run when an
@@ -8,32 +9,32 @@
  */
 
 namespace MIST {
-    template <class T>
     class Task {
     private:
-        T id;
+        std::string id;
         MIST_taskfunc fn;
 
     public:
-        Task(T id, MIST_taskfunc fn) {
+        Task(std::string id, MIST_taskfunc fn) {
             this->id = id;
             this->fn = fn;
         }
 
-		void send(T message);
-
         ~Task() {
-            delete id;
-            delete fn;
+            id.clear();
+            //delete (void*)fn;
         }
 
-        auto getID() {
+        std::string getID() {
             return id;
+        }
+
+        MIST_taskfunc getTaskFunc() {
+            return fn;
         }
 
         void run() {
             fn();
         }
-
     };
 } /* MIST */

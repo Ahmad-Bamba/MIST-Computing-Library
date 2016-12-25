@@ -13,16 +13,17 @@
 namespace MIST {
     class MIST {
     private:
+
     	struct computerHardware
     	{
     	    unsigned long allowedThreads;
     	    unsigned long long allowedMemory;
-    	    std::string name;
     	    bool enableHT;
     	};
 
     	struct MISTHost
     	{
+            std::string name;
     	    bool isLocal; //is it this computer?
     	    std::string address; //what address is it? "local" for if it's local
             computerHardware computer; //What hardware does it have?
@@ -46,39 +47,40 @@ namespace MIST {
         }
 
         ~MIST() = default;
+		//LOCAL INITIALIZATION
 
-    	//LOCAL INITIALIZATION
-    	void InitComputer(unsigned long threads = 1, unsigned long long memory = 2048, std::string name = "UnnamedComputer UnlovedComputer", std::string address = "0.0.0.0", bool enableHT = false) {
+		void InitComputer(unsigned long threads = 1, unsigned long long memory = 2048, std::string name = "Unnamed, Unloved Computer", std::string address = "0.0.0.0", bool enableHT = false) {
+            local.isLocal = true;
+            local.address = "local";
+            local.computer.allowedMemory = memory;
+            local.computer.allowedThreads = threads;
+            local.name = name;
+            local.computer.enableHT = enableHT;
+		}
+		void setThreads(unsigned long threads) {
+            local.computer.allowedThreads = threads;
+		}
+		void setMemory(unsigned long long memory) {
+            local.computer.allowedMemory = memory;
+		}
+		void enableHT(bool enableHT) {
+            local.computer.enableHT = enableHT;
+		}
+		void setName(std::string computerName) {
+            local.name = computerName;
+		}
+		void setAddress(std::string address) {
+            local.address = address;
+		}
 
+		//NETWORK INITIALIZATION
+        void inviteMachine(std::string IP) { //invites machine to network (changed from addMachine to signify that only master machine can do this)
+            //Perhaps accomplish this by creating an invite task in MIST.hpp that sends information back to this machine?
         }
 
-    	void setThreads(unsigned long threads) {
+  /*    void sendTask(std::shared_ptr<Task<auto>> task) {
+           send(task.getID());
+        }*/
 
-        }
-
-    	void setMemory(unsigned long long memory) {
-
-        }
-
-    	void enableHT(bool enableHT) {
-
-        }
-
-    	void setName(std::string computerName) {
-
-        }
-
-    	void setAddress(std::string address) {
-
-        }
-
-      //NETWORK INITIALIZATION
-      void addMachine(std::string IP) {
-          //IPs.push_back(IP);
-      }
-
-      /*void sendTask(std::shared_ptr<Task<auto>> task) {
-          send(task.getID());
-      }*/
     };
 }
