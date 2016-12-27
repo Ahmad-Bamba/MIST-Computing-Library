@@ -6,7 +6,9 @@ MIST Computing is a long-term project aimed at bringing the power of distributed
 
 What MIST Computing aims to do is alleviate this road block to innovation in software. MIST is a modular distributed computing system that is easy to use and implement.
 
-### Installation
+### Installation Instructions
+
+To be determined.
 
 ### Planned Features (next release)
 1. Variables shared in a LAN network
