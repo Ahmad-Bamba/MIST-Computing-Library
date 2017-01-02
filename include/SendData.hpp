@@ -78,14 +78,15 @@ namespace MIST {
            this->IP = IP;
            this->port = port;
            this->endpoint_iterator = resolver.resolve(this->query);
+
         }; //creates at minimum one thread (for cleanup_loop)
         ~SendData() { };
 
         inline void Send(std::string data, std::string IP) {
             //Is this necessary?
-            size_t size;
-            size = data.size();
-            data.insert(data.begin(), size);
+            //size_t size;
+            //size = data.size();
+            //data.insert(data.begin(), size);
             std::thread * t = new std::thread(&SendData::send_string, this, data, number_of_send_jobs + 1);
             Job j;
             j.isComplete = false;

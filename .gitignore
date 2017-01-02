@@ -51,7 +51,8 @@ x64/*
 
 #Dumbness
 download?source=files
-main.cpp
+main.cpp #for testing
+src/MIST.cpp #for testing
 */threads*
 a
 
