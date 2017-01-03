@@ -24,32 +24,57 @@
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata.h>
 #include <google/protobuf/message.h>
-#include <google/protobuf/repeated_field.h>
-#include <google/protobuf/extension_set.h>
+#include <google/protobuf/repeated_field.h>  // IWYU pragma: export
+#include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
+namespace ProtobufMIST {
+class ComputerInformation;
+class ComputerInformationDefaultTypeInternal;
+extern ComputerInformationDefaultTypeInternal _ComputerInformation_default_instance_;
+class Network;
+class NetworkDefaultTypeInternal;
+extern NetworkDefaultTypeInternal _Network_default_instance_;
+class Shared_bool;
+class Shared_boolDefaultTypeInternal;
+extern Shared_boolDefaultTypeInternal _Shared_bool_default_instance_;
+class Shared_bytes;
+class Shared_bytesDefaultTypeInternal;
+extern Shared_bytesDefaultTypeInternal _Shared_bytes_default_instance_;
+class Shared_double;
+class Shared_doubleDefaultTypeInternal;
+extern Shared_doubleDefaultTypeInternal _Shared_double_default_instance_;
+class Shared_float;
+class Shared_floatDefaultTypeInternal;
+extern Shared_floatDefaultTypeInternal _Shared_float_default_instance_;
+class Shared_int32;
+class Shared_int32DefaultTypeInternal;
+extern Shared_int32DefaultTypeInternal _Shared_int32_default_instance_;
+class Shared_int64;
+class Shared_int64DefaultTypeInternal;
+extern Shared_int64DefaultTypeInternal _Shared_int64_default_instance_;
+class Shared_string;
+class Shared_stringDefaultTypeInternal;
+extern Shared_stringDefaultTypeInternal _Shared_string_default_instance_;
+class Shared_uint32;
+class Shared_uint32DefaultTypeInternal;
+extern Shared_uint32DefaultTypeInternal _Shared_uint32_default_instance_;
+class Shared_uint64;
+class Shared_uint64DefaultTypeInternal;
+extern Shared_uint64DefaultTypeInternal _Shared_uint64_default_instance_;
+class Task;
+class TaskDefaultTypeInternal;
+extern TaskDefaultTypeInternal _Task_default_instance_;
+class Variable_name;
+class Variable_nameDefaultTypeInternal;
+extern Variable_nameDefaultTypeInternal _Variable_name_default_instance_;
+}  // namespace ProtobufMIST
 
 namespace ProtobufMIST {
 
 // Internal implementation detail -- do not call these.
 void protobuf_AddDesc_MIST_2eproto();
 void protobuf_InitDefaults_MIST_2eproto();
-void protobuf_AssignDesc_MIST_2eproto();
-void protobuf_ShutdownFile_MIST_2eproto();
-
-class ComputerInformation;
-class Network;
-class Shared_bool;
-class Shared_bytes;
-class Shared_double;
-class Shared_float;
-class Shared_int32;
-class Shared_int64;
-class Shared_string;
-class Shared_uint32;
-class Shared_uint64;
-class Task;
-class Variable_name;
 
 // ===================================================================
 
@@ -68,73 +93,76 @@ class ComputerInformation : public ::google::protobuf::Message /* @@protoc_inser
   static const ::google::protobuf::Descriptor* descriptor();
   static const ComputerInformation& default_instance();
 
-  static const ComputerInformation* internal_default_instance();
+  static inline const ComputerInformation* internal_default_instance() {
+    return reinterpret_cast<const ComputerInformation*>(
+               &_ComputerInformation_default_instance_);
+  }
 
   void Swap(ComputerInformation* other);
 
   // implements Message ----------------------------------------------
 
-  inline ComputerInformation* New() const { return New(NULL); }
+  inline ComputerInformation* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  ComputerInformation* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  ComputerInformation* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const ComputerInformation& from);
   void MergeFrom(const ComputerInformation& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(ComputerInformation* other);
-  void UnsafeMergeFrom(const ComputerInformation& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 allowedThreads = 1;
+  // uint32 allowedThreads = 1;
   void clear_allowedthreads();
   static const int kAllowedThreadsFieldNumber = 1;
   ::google::protobuf::uint32 allowedthreads() const;
   void set_allowedthreads(::google::protobuf::uint32 value);
 
-  // optional uint64 allowedMemory = 2;
+  // uint64 allowedMemory = 2;
   void clear_allowedmemory();
   static const int kAllowedMemoryFieldNumber = 2;
   ::google::protobuf::uint64 allowedmemory() const;
   void set_allowedmemory(::google::protobuf::uint64 value);
 
-  // optional bool enableHT = 3;
+  // bool enableHT = 3;
   void clear_enableht();
   static const int kEnableHTFieldNumber = 3;
   bool enableht() const;
   void set_enableht(bool value);
 
-  // optional string name = 4;
+  // string name = 4;
   void clear_name();
   static const int kNameFieldNumber = 4;
   const ::std::string& name() const;
@@ -145,7 +173,7 @@ class ComputerInformation : public ::google::protobuf::Message /* @@protoc_inser
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // optional string address = 5;
+  // string address = 5;
   void clear_address();
   static const int kAddressFieldNumber = 5;
   const ::std::string& address() const;
@@ -168,13 +196,10 @@ class ComputerInformation : public ::google::protobuf::Message /* @@protoc_inser
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<ComputerInformation> ComputerInformation_default_instance_;
-
 // -------------------------------------------------------------------
 
 class Variable_name : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtobufMIST.Variable_name) */ {
@@ -192,55 +217,58 @@ class Variable_name : public ::google::protobuf::Message /* @@protoc_insertion_p
   static const ::google::protobuf::Descriptor* descriptor();
   static const Variable_name& default_instance();
 
-  static const Variable_name* internal_default_instance();
+  static inline const Variable_name* internal_default_instance() {
+    return reinterpret_cast<const Variable_name*>(
+               &_Variable_name_default_instance_);
+  }
 
   void Swap(Variable_name* other);
 
   // implements Message ----------------------------------------------
 
-  inline Variable_name* New() const { return New(NULL); }
+  inline Variable_name* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Variable_name* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  Variable_name* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const Variable_name& from);
   void MergeFrom(const Variable_name& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Variable_name* other);
-  void UnsafeMergeFrom(const Variable_name& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional string name = 1;
+  // string name = 1;
   void clear_name();
   static const int kNameFieldNumber = 1;
   const ::std::string& name() const;
@@ -259,13 +287,10 @@ class Variable_name : public ::google::protobuf::Message /* @@protoc_insertion_p
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<Variable_name> Variable_name_default_instance_;
-
 // -------------------------------------------------------------------
 
 class Shared_int64 : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtobufMIST.Shared_int64) */ {
@@ -283,55 +308,58 @@ class Shared_int64 : public ::google::protobuf::Message /* @@protoc_insertion_po
   static const ::google::protobuf::Descriptor* descriptor();
   static const Shared_int64& default_instance();
 
-  static const Shared_int64* internal_default_instance();
+  static inline const Shared_int64* internal_default_instance() {
+    return reinterpret_cast<const Shared_int64*>(
+               &_Shared_int64_default_instance_);
+  }
 
   void Swap(Shared_int64* other);
 
   // implements Message ----------------------------------------------
 
-  inline Shared_int64* New() const { return New(NULL); }
+  inline Shared_int64* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Shared_int64* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  Shared_int64* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const Shared_int64& from);
   void MergeFrom(const Shared_int64& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Shared_int64* other);
-  void UnsafeMergeFrom(const Shared_int64& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional .ProtobufMIST.Variable_name name = 1;
+  // .ProtobufMIST.Variable_name name = 1;
   bool has_name() const;
   void clear_name();
   static const int kNameFieldNumber = 1;
@@ -340,7 +368,7 @@ class Shared_int64 : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::ProtobufMIST::Variable_name* release_name();
   void set_allocated_name(::ProtobufMIST::Variable_name* name);
 
-  // optional int64 value = 2;
+  // int64 value = 2;
   void clear_value();
   static const int kValueFieldNumber = 2;
   ::google::protobuf::int64 value() const;
@@ -355,13 +383,10 @@ class Shared_int64 : public ::google::protobuf::Message /* @@protoc_insertion_po
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<Shared_int64> Shared_int64_default_instance_;
-
 // -------------------------------------------------------------------
 
 class Shared_uint64 : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtobufMIST.Shared_uint64) */ {
@@ -379,55 +404,58 @@ class Shared_uint64 : public ::google::protobuf::Message /* @@protoc_insertion_p
   static const ::google::protobuf::Descriptor* descriptor();
   static const Shared_uint64& default_instance();
 
-  static const Shared_uint64* internal_default_instance();
+  static inline const Shared_uint64* internal_default_instance() {
+    return reinterpret_cast<const Shared_uint64*>(
+               &_Shared_uint64_default_instance_);
+  }
 
   void Swap(Shared_uint64* other);
 
   // implements Message ----------------------------------------------
 
-  inline Shared_uint64* New() const { return New(NULL); }
+  inline Shared_uint64* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Shared_uint64* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  Shared_uint64* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const Shared_uint64& from);
   void MergeFrom(const Shared_uint64& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Shared_uint64* other);
-  void UnsafeMergeFrom(const Shared_uint64& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional .ProtobufMIST.Variable_name name = 1;
+  // .ProtobufMIST.Variable_name name = 1;
   bool has_name() const;
   void clear_name();
   static const int kNameFieldNumber = 1;
@@ -436,7 +464,7 @@ class Shared_uint64 : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::ProtobufMIST::Variable_name* release_name();
   void set_allocated_name(::ProtobufMIST::Variable_name* name);
 
-  // optional uint64 value = 2;
+  // uint64 value = 2;
   void clear_value();
   static const int kValueFieldNumber = 2;
   ::google::protobuf::uint64 value() const;
@@ -451,13 +479,10 @@ class Shared_uint64 : public ::google::protobuf::Message /* @@protoc_insertion_p
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<Shared_uint64> Shared_uint64_default_instance_;
-
 // -------------------------------------------------------------------
 
 class Shared_int32 : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtobufMIST.Shared_int32) */ {
@@ -475,55 +500,58 @@ class Shared_int32 : public ::google::protobuf::Message /* @@protoc_insertion_po
   static const ::google::protobuf::Descriptor* descriptor();
   static const Shared_int32& default_instance();
 
-  static const Shared_int32* internal_default_instance();
+  static inline const Shared_int32* internal_default_instance() {
+    return reinterpret_cast<const Shared_int32*>(
+               &_Shared_int32_default_instance_);
+  }
 
   void Swap(Shared_int32* other);
 
   // implements Message ----------------------------------------------
 
-  inline Shared_int32* New() const { return New(NULL); }
+  inline Shared_int32* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Shared_int32* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  Shared_int32* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const Shared_int32& from);
   void MergeFrom(const Shared_int32& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Shared_int32* other);
-  void UnsafeMergeFrom(const Shared_int32& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional .ProtobufMIST.Variable_name name = 1;
+  // .ProtobufMIST.Variable_name name = 1;
   bool has_name() const;
   void clear_name();
   static const int kNameFieldNumber = 1;
@@ -532,7 +560,7 @@ class Shared_int32 : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::ProtobufMIST::Variable_name* release_name();
   void set_allocated_name(::ProtobufMIST::Variable_name* name);
 
-  // optional int64 value = 2;
+  // int64 value = 2;
   void clear_value();
   static const int kValueFieldNumber = 2;
   ::google::protobuf::int64 value() const;
@@ -547,13 +575,10 @@ class Shared_int32 : public ::google::protobuf::Message /* @@protoc_insertion_po
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<Shared_int32> Shared_int32_default_instance_;
-
 // -------------------------------------------------------------------
 
 class Shared_uint32 : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtobufMIST.Shared_uint32) */ {
@@ -571,55 +596,58 @@ class Shared_uint32 : public ::google::protobuf::Message /* @@protoc_insertion_p
   static const ::google::protobuf::Descriptor* descriptor();
   static const Shared_uint32& default_instance();
 
-  static const Shared_uint32* internal_default_instance();
+  static inline const Shared_uint32* internal_default_instance() {
+    return reinterpret_cast<const Shared_uint32*>(
+               &_Shared_uint32_default_instance_);
+  }
 
   void Swap(Shared_uint32* other);
 
   // implements Message ----------------------------------------------
 
-  inline Shared_uint32* New() const { return New(NULL); }
+  inline Shared_uint32* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Shared_uint32* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  Shared_uint32* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const Shared_uint32& from);
   void MergeFrom(const Shared_uint32& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Shared_uint32* other);
-  void UnsafeMergeFrom(const Shared_uint32& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional .ProtobufMIST.Variable_name name = 1;
+  // .ProtobufMIST.Variable_name name = 1;
   bool has_name() const;
   void clear_name();
   static const int kNameFieldNumber = 1;
@@ -628,7 +656,7 @@ class Shared_uint32 : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::ProtobufMIST::Variable_name* release_name();
   void set_allocated_name(::ProtobufMIST::Variable_name* name);
 
-  // optional uint64 value = 2;
+  // uint64 value = 2;
   void clear_value();
   static const int kValueFieldNumber = 2;
   ::google::protobuf::uint64 value() const;
@@ -643,13 +671,10 @@ class Shared_uint32 : public ::google::protobuf::Message /* @@protoc_insertion_p
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<Shared_uint32> Shared_uint32_default_instance_;
-
 // -------------------------------------------------------------------
 
 class Shared_bytes : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtobufMIST.Shared_bytes) */ {
@@ -667,55 +692,58 @@ class Shared_bytes : public ::google::protobuf::Message /* @@protoc_insertion_po
   static const ::google::protobuf::Descriptor* descriptor();
   static const Shared_bytes& default_instance();
 
-  static const Shared_bytes* internal_default_instance();
+  static inline const Shared_bytes* internal_default_instance() {
+    return reinterpret_cast<const Shared_bytes*>(
+               &_Shared_bytes_default_instance_);
+  }
 
   void Swap(Shared_bytes* other);
 
   // implements Message ----------------------------------------------
 
-  inline Shared_bytes* New() const { return New(NULL); }
+  inline Shared_bytes* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Shared_bytes* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  Shared_bytes* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const Shared_bytes& from);
   void MergeFrom(const Shared_bytes& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Shared_bytes* other);
-  void UnsafeMergeFrom(const Shared_bytes& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional .ProtobufMIST.Variable_name name = 1;
+  // .ProtobufMIST.Variable_name name = 1;
   bool has_name() const;
   void clear_name();
   static const int kNameFieldNumber = 1;
@@ -724,7 +752,7 @@ class Shared_bytes : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::ProtobufMIST::Variable_name* release_name();
   void set_allocated_name(::ProtobufMIST::Variable_name* name);
 
-  // optional bytes value = 2;
+  // bytes value = 2;
   void clear_value();
   static const int kValueFieldNumber = 2;
   const ::std::string& value() const;
@@ -744,13 +772,10 @@ class Shared_bytes : public ::google::protobuf::Message /* @@protoc_insertion_po
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<Shared_bytes> Shared_bytes_default_instance_;
-
 // -------------------------------------------------------------------
 
 class Shared_bool : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtobufMIST.Shared_bool) */ {
@@ -768,55 +793,58 @@ class Shared_bool : public ::google::protobuf::Message /* @@protoc_insertion_poi
   static const ::google::protobuf::Descriptor* descriptor();
   static const Shared_bool& default_instance();
 
-  static const Shared_bool* internal_default_instance();
+  static inline const Shared_bool* internal_default_instance() {
+    return reinterpret_cast<const Shared_bool*>(
+               &_Shared_bool_default_instance_);
+  }
 
   void Swap(Shared_bool* other);
 
   // implements Message ----------------------------------------------
 
-  inline Shared_bool* New() const { return New(NULL); }
+  inline Shared_bool* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Shared_bool* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  Shared_bool* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const Shared_bool& from);
   void MergeFrom(const Shared_bool& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Shared_bool* other);
-  void UnsafeMergeFrom(const Shared_bool& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional .ProtobufMIST.Variable_name name = 1;
+  // .ProtobufMIST.Variable_name name = 1;
   bool has_name() const;
   void clear_name();
   static const int kNameFieldNumber = 1;
@@ -825,7 +853,7 @@ class Shared_bool : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::ProtobufMIST::Variable_name* release_name();
   void set_allocated_name(::ProtobufMIST::Variable_name* name);
 
-  // optional bool value = 2;
+  // bool value = 2;
   void clear_value();
   static const int kValueFieldNumber = 2;
   bool value() const;
@@ -840,13 +868,10 @@ class Shared_bool : public ::google::protobuf::Message /* @@protoc_insertion_poi
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<Shared_bool> Shared_bool_default_instance_;
-
 // -------------------------------------------------------------------
 
 class Shared_float : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtobufMIST.Shared_float) */ {
@@ -864,55 +889,58 @@ class Shared_float : public ::google::protobuf::Message /* @@protoc_insertion_po
   static const ::google::protobuf::Descriptor* descriptor();
   static const Shared_float& default_instance();
 
-  static const Shared_float* internal_default_instance();
+  static inline const Shared_float* internal_default_instance() {
+    return reinterpret_cast<const Shared_float*>(
+               &_Shared_float_default_instance_);
+  }
 
   void Swap(Shared_float* other);
 
   // implements Message ----------------------------------------------
 
-  inline Shared_float* New() const { return New(NULL); }
+  inline Shared_float* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Shared_float* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  Shared_float* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const Shared_float& from);
   void MergeFrom(const Shared_float& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Shared_float* other);
-  void UnsafeMergeFrom(const Shared_float& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional .ProtobufMIST.Variable_name name = 1;
+  // .ProtobufMIST.Variable_name name = 1;
   bool has_name() const;
   void clear_name();
   static const int kNameFieldNumber = 1;
@@ -921,7 +949,7 @@ class Shared_float : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::ProtobufMIST::Variable_name* release_name();
   void set_allocated_name(::ProtobufMIST::Variable_name* name);
 
-  // optional float value = 2;
+  // float value = 2;
   void clear_value();
   static const int kValueFieldNumber = 2;
   float value() const;
@@ -936,13 +964,10 @@ class Shared_float : public ::google::protobuf::Message /* @@protoc_insertion_po
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<Shared_float> Shared_float_default_instance_;
-
 // -------------------------------------------------------------------
 
 class Shared_double : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtobufMIST.Shared_double) */ {
@@ -960,55 +985,58 @@ class Shared_double : public ::google::protobuf::Message /* @@protoc_insertion_p
   static const ::google::protobuf::Descriptor* descriptor();
   static const Shared_double& default_instance();
 
-  static const Shared_double* internal_default_instance();
+  static inline const Shared_double* internal_default_instance() {
+    return reinterpret_cast<const Shared_double*>(
+               &_Shared_double_default_instance_);
+  }
 
   void Swap(Shared_double* other);
 
   // implements Message ----------------------------------------------
 
-  inline Shared_double* New() const { return New(NULL); }
+  inline Shared_double* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Shared_double* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  Shared_double* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const Shared_double& from);
   void MergeFrom(const Shared_double& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Shared_double* other);
-  void UnsafeMergeFrom(const Shared_double& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional .ProtobufMIST.Variable_name name = 1;
+  // .ProtobufMIST.Variable_name name = 1;
   bool has_name() const;
   void clear_name();
   static const int kNameFieldNumber = 1;
@@ -1017,7 +1045,7 @@ class Shared_double : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::ProtobufMIST::Variable_name* release_name();
   void set_allocated_name(::ProtobufMIST::Variable_name* name);
 
-  // optional double value = 2;
+  // double value = 2;
   void clear_value();
   static const int kValueFieldNumber = 2;
   double value() const;
@@ -1032,13 +1060,10 @@ class Shared_double : public ::google::protobuf::Message /* @@protoc_insertion_p
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<Shared_double> Shared_double_default_instance_;
-
 // -------------------------------------------------------------------
 
 class Shared_string : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtobufMIST.Shared_string) */ {
@@ -1056,55 +1081,58 @@ class Shared_string : public ::google::protobuf::Message /* @@protoc_insertion_p
   static const ::google::protobuf::Descriptor* descriptor();
   static const Shared_string& default_instance();
 
-  static const Shared_string* internal_default_instance();
+  static inline const Shared_string* internal_default_instance() {
+    return reinterpret_cast<const Shared_string*>(
+               &_Shared_string_default_instance_);
+  }
 
   void Swap(Shared_string* other);
 
   // implements Message ----------------------------------------------
 
-  inline Shared_string* New() const { return New(NULL); }
+  inline Shared_string* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Shared_string* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  Shared_string* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const Shared_string& from);
   void MergeFrom(const Shared_string& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Shared_string* other);
-  void UnsafeMergeFrom(const Shared_string& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional .ProtobufMIST.Variable_name name = 1;
+  // .ProtobufMIST.Variable_name name = 1;
   bool has_name() const;
   void clear_name();
   static const int kNameFieldNumber = 1;
@@ -1113,7 +1141,7 @@ class Shared_string : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::ProtobufMIST::Variable_name* release_name();
   void set_allocated_name(::ProtobufMIST::Variable_name* name);
 
-  // optional string value = 2;
+  // string value = 2;
   void clear_value();
   static const int kValueFieldNumber = 2;
   const ::std::string& value() const;
@@ -1133,13 +1161,10 @@ class Shared_string : public ::google::protobuf::Message /* @@protoc_insertion_p
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<Shared_string> Shared_string_default_instance_;
-
 // -------------------------------------------------------------------
 
 class Network : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtobufMIST.Network) */ {
@@ -1157,49 +1182,52 @@ class Network : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   static const ::google::protobuf::Descriptor* descriptor();
   static const Network& default_instance();
 
-  static const Network* internal_default_instance();
+  static inline const Network* internal_default_instance() {
+    return reinterpret_cast<const Network*>(
+               &_Network_default_instance_);
+  }
 
   void Swap(Network* other);
 
   // implements Message ----------------------------------------------
 
-  inline Network* New() const { return New(NULL); }
+  inline Network* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Network* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  Network* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const Network& from);
   void MergeFrom(const Network& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Network* other);
-  void UnsafeMergeFrom(const Network& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
@@ -1225,13 +1253,10 @@ class Network : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<Network> Network_default_instance_;
-
 // -------------------------------------------------------------------
 
 class Task : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtobufMIST.Task) */ {
@@ -1249,55 +1274,58 @@ class Task : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   static const ::google::protobuf::Descriptor* descriptor();
   static const Task& default_instance();
 
-  static const Task* internal_default_instance();
+  static inline const Task* internal_default_instance() {
+    return reinterpret_cast<const Task*>(
+               &_Task_default_instance_);
+  }
 
   void Swap(Task* other);
 
   // implements Message ----------------------------------------------
 
-  inline Task* New() const { return New(NULL); }
+  inline Task* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Task* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
+  Task* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void CopyFrom(const Task& from);
   void MergeFrom(const Task& from);
-  void Clear();
-  bool IsInitialized() const;
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const;
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
   ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
     return InternalSerializeWithCachedSizesToArray(false, output);
   }
-  int GetCachedSize() const { return _cached_size_; }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Task* other);
-  void UnsafeMergeFrom(const Task& from);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
+    return NULL;
   }
   inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
+    return NULL;
   }
   public:
 
-  ::google::protobuf::Metadata GetMetadata() const;
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // optional string task_name = 1;
+  // string task_name = 1;
   void clear_task_name();
   static const int kTaskNameFieldNumber = 1;
   const ::std::string& task_name() const;
@@ -1308,7 +1336,7 @@ class Task : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::std::string* release_task_name();
   void set_allocated_task_name(::std::string* task_name);
 
-  // optional string task_id = 2;
+  // string task_id = 2;
   void clear_task_id();
   static const int kTaskIdFieldNumber = 2;
   const ::std::string& task_id() const;
@@ -1328,13 +1356,10 @@ class Task : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_MIST_2eproto_impl();
   friend void  protobuf_AddDesc_MIST_2eproto_impl();
-  friend void protobuf_AssignDesc_MIST_2eproto();
+  friend const ::google::protobuf::uint32* protobuf_Offsets_MIST_2eproto();
   friend void protobuf_ShutdownFile_MIST_2eproto();
 
-  void InitAsDefaultInstance();
 };
-extern ::google::protobuf::internal::ExplicitlyConstructed<Task> Task_default_instance_;
-
 // ===================================================================
 
 
@@ -1343,7 +1368,7 @@ extern ::google::protobuf::internal::ExplicitlyConstructed<Task> Task_default_in
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // ComputerInformation
 
-// optional uint32 allowedThreads = 1;
+// uint32 allowedThreads = 1;
 inline void ComputerInformation::clear_allowedthreads() {
   allowedthreads_ = 0u;
 }
@@ -1357,7 +1382,7 @@ inline void ComputerInformation::set_allowedthreads(::google::protobuf::uint32 v
   // @@protoc_insertion_point(field_set:ProtobufMIST.ComputerInformation.allowedThreads)
 }
 
-// optional uint64 allowedMemory = 2;
+// uint64 allowedMemory = 2;
 inline void ComputerInformation::clear_allowedmemory() {
   allowedmemory_ = GOOGLE_ULONGLONG(0);
 }
@@ -1371,7 +1396,7 @@ inline void ComputerInformation::set_allowedmemory(::google::protobuf::uint64 va
   // @@protoc_insertion_point(field_set:ProtobufMIST.ComputerInformation.allowedMemory)
 }
 
-// optional bool enableHT = 3;
+// bool enableHT = 3;
 inline void ComputerInformation::clear_enableht() {
   enableht_ = false;
 }
@@ -1385,13 +1410,13 @@ inline void ComputerInformation::set_enableht(bool value) {
   // @@protoc_insertion_point(field_set:ProtobufMIST.ComputerInformation.enableHT)
 }
 
-// optional string name = 4;
+// string name = 4;
 inline void ComputerInformation::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& ComputerInformation::name() const {
   // @@protoc_insertion_point(field_get:ProtobufMIST.ComputerInformation.name)
-  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return name_.GetNoArena();
 }
 inline void ComputerInformation::set_name(const ::std::string& value) {
   
@@ -1429,13 +1454,13 @@ inline void ComputerInformation::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.ComputerInformation.name)
 }
 
-// optional string address = 5;
+// string address = 5;
 inline void ComputerInformation::clear_address() {
   address_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& ComputerInformation::address() const {
   // @@protoc_insertion_point(field_get:ProtobufMIST.ComputerInformation.address)
-  return address_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return address_.GetNoArena();
 }
 inline void ComputerInformation::set_address(const ::std::string& value) {
   
@@ -1473,20 +1498,17 @@ inline void ComputerInformation::set_allocated_address(::std::string* address) {
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.ComputerInformation.address)
 }
 
-inline const ComputerInformation* ComputerInformation::internal_default_instance() {
-  return &ComputerInformation_default_instance_.get();
-}
 // -------------------------------------------------------------------
 
 // Variable_name
 
-// optional string name = 1;
+// string name = 1;
 inline void Variable_name::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& Variable_name::name() const {
   // @@protoc_insertion_point(field_get:ProtobufMIST.Variable_name.name)
-  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return name_.GetNoArena();
 }
 inline void Variable_name::set_name(const ::std::string& value) {
   
@@ -1524,14 +1546,11 @@ inline void Variable_name::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Variable_name.name)
 }
 
-inline const Variable_name* Variable_name::internal_default_instance() {
-  return &Variable_name_default_instance_.get();
-}
 // -------------------------------------------------------------------
 
 // Shared_int64
 
-// optional .ProtobufMIST.Variable_name name = 1;
+// .ProtobufMIST.Variable_name name = 1;
 inline bool Shared_int64::has_name() const {
   return this != internal_default_instance() && name_ != NULL;
 }
@@ -1570,7 +1589,7 @@ inline void Shared_int64::set_allocated_name(::ProtobufMIST::Variable_name* name
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_int64.name)
 }
 
-// optional int64 value = 2;
+// int64 value = 2;
 inline void Shared_int64::clear_value() {
   value_ = GOOGLE_LONGLONG(0);
 }
@@ -1584,14 +1603,11 @@ inline void Shared_int64::set_value(::google::protobuf::int64 value) {
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_int64.value)
 }
 
-inline const Shared_int64* Shared_int64::internal_default_instance() {
-  return &Shared_int64_default_instance_.get();
-}
 // -------------------------------------------------------------------
 
 // Shared_uint64
 
-// optional .ProtobufMIST.Variable_name name = 1;
+// .ProtobufMIST.Variable_name name = 1;
 inline bool Shared_uint64::has_name() const {
   return this != internal_default_instance() && name_ != NULL;
 }
@@ -1630,7 +1646,7 @@ inline void Shared_uint64::set_allocated_name(::ProtobufMIST::Variable_name* nam
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_uint64.name)
 }
 
-// optional uint64 value = 2;
+// uint64 value = 2;
 inline void Shared_uint64::clear_value() {
   value_ = GOOGLE_ULONGLONG(0);
 }
@@ -1644,14 +1660,11 @@ inline void Shared_uint64::set_value(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_uint64.value)
 }
 
-inline const Shared_uint64* Shared_uint64::internal_default_instance() {
-  return &Shared_uint64_default_instance_.get();
-}
 // -------------------------------------------------------------------
 
 // Shared_int32
 
-// optional .ProtobufMIST.Variable_name name = 1;
+// .ProtobufMIST.Variable_name name = 1;
 inline bool Shared_int32::has_name() const {
   return this != internal_default_instance() && name_ != NULL;
 }
@@ -1690,7 +1703,7 @@ inline void Shared_int32::set_allocated_name(::ProtobufMIST::Variable_name* name
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_int32.name)
 }
 
-// optional int64 value = 2;
+// int64 value = 2;
 inline void Shared_int32::clear_value() {
   value_ = GOOGLE_LONGLONG(0);
 }
@@ -1704,14 +1717,11 @@ inline void Shared_int32::set_value(::google::protobuf::int64 value) {
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_int32.value)
 }
 
-inline const Shared_int32* Shared_int32::internal_default_instance() {
-  return &Shared_int32_default_instance_.get();
-}
 // -------------------------------------------------------------------
 
 // Shared_uint32
 
-// optional .ProtobufMIST.Variable_name name = 1;
+// .ProtobufMIST.Variable_name name = 1;
 inline bool Shared_uint32::has_name() const {
   return this != internal_default_instance() && name_ != NULL;
 }
@@ -1750,7 +1760,7 @@ inline void Shared_uint32::set_allocated_name(::ProtobufMIST::Variable_name* nam
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_uint32.name)
 }
 
-// optional uint64 value = 2;
+// uint64 value = 2;
 inline void Shared_uint32::clear_value() {
   value_ = GOOGLE_ULONGLONG(0);
 }
@@ -1764,14 +1774,11 @@ inline void Shared_uint32::set_value(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_uint32.value)
 }
 
-inline const Shared_uint32* Shared_uint32::internal_default_instance() {
-  return &Shared_uint32_default_instance_.get();
-}
 // -------------------------------------------------------------------
 
 // Shared_bytes
 
-// optional .ProtobufMIST.Variable_name name = 1;
+// .ProtobufMIST.Variable_name name = 1;
 inline bool Shared_bytes::has_name() const {
   return this != internal_default_instance() && name_ != NULL;
 }
@@ -1810,13 +1817,13 @@ inline void Shared_bytes::set_allocated_name(::ProtobufMIST::Variable_name* name
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_bytes.name)
 }
 
-// optional bytes value = 2;
+// bytes value = 2;
 inline void Shared_bytes::clear_value() {
   value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& Shared_bytes::value() const {
   // @@protoc_insertion_point(field_get:ProtobufMIST.Shared_bytes.value)
-  return value_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return value_.GetNoArena();
 }
 inline void Shared_bytes::set_value(const ::std::string& value) {
   
@@ -1854,14 +1861,11 @@ inline void Shared_bytes::set_allocated_value(::std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_bytes.value)
 }
 
-inline const Shared_bytes* Shared_bytes::internal_default_instance() {
-  return &Shared_bytes_default_instance_.get();
-}
 // -------------------------------------------------------------------
 
 // Shared_bool
 
-// optional .ProtobufMIST.Variable_name name = 1;
+// .ProtobufMIST.Variable_name name = 1;
 inline bool Shared_bool::has_name() const {
   return this != internal_default_instance() && name_ != NULL;
 }
@@ -1900,7 +1904,7 @@ inline void Shared_bool::set_allocated_name(::ProtobufMIST::Variable_name* name)
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_bool.name)
 }
 
-// optional bool value = 2;
+// bool value = 2;
 inline void Shared_bool::clear_value() {
   value_ = false;
 }
@@ -1914,14 +1918,11 @@ inline void Shared_bool::set_value(bool value) {
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_bool.value)
 }
 
-inline const Shared_bool* Shared_bool::internal_default_instance() {
-  return &Shared_bool_default_instance_.get();
-}
 // -------------------------------------------------------------------
 
 // Shared_float
 
-// optional .ProtobufMIST.Variable_name name = 1;
+// .ProtobufMIST.Variable_name name = 1;
 inline bool Shared_float::has_name() const {
   return this != internal_default_instance() && name_ != NULL;
 }
@@ -1960,7 +1961,7 @@ inline void Shared_float::set_allocated_name(::ProtobufMIST::Variable_name* name
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_float.name)
 }
 
-// optional float value = 2;
+// float value = 2;
 inline void Shared_float::clear_value() {
   value_ = 0;
 }
@@ -1974,14 +1975,11 @@ inline void Shared_float::set_value(float value) {
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_float.value)
 }
 
-inline const Shared_float* Shared_float::internal_default_instance() {
-  return &Shared_float_default_instance_.get();
-}
 // -------------------------------------------------------------------
 
 // Shared_double
 
-// optional .ProtobufMIST.Variable_name name = 1;
+// .ProtobufMIST.Variable_name name = 1;
 inline bool Shared_double::has_name() const {
   return this != internal_default_instance() && name_ != NULL;
 }
@@ -2020,7 +2018,7 @@ inline void Shared_double::set_allocated_name(::ProtobufMIST::Variable_name* nam
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_double.name)
 }
 
-// optional double value = 2;
+// double value = 2;
 inline void Shared_double::clear_value() {
   value_ = 0;
 }
@@ -2034,14 +2032,11 @@ inline void Shared_double::set_value(double value) {
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_double.value)
 }
 
-inline const Shared_double* Shared_double::internal_default_instance() {
-  return &Shared_double_default_instance_.get();
-}
 // -------------------------------------------------------------------
 
 // Shared_string
 
-// optional .ProtobufMIST.Variable_name name = 1;
+// .ProtobufMIST.Variable_name name = 1;
 inline bool Shared_string::has_name() const {
   return this != internal_default_instance() && name_ != NULL;
 }
@@ -2080,13 +2075,13 @@ inline void Shared_string::set_allocated_name(::ProtobufMIST::Variable_name* nam
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_string.name)
 }
 
-// optional string value = 2;
+// string value = 2;
 inline void Shared_string::clear_value() {
   value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& Shared_string::value() const {
   // @@protoc_insertion_point(field_get:ProtobufMIST.Shared_string.value)
-  return value_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return value_.GetNoArena();
 }
 inline void Shared_string::set_value(const ::std::string& value) {
   
@@ -2124,9 +2119,6 @@ inline void Shared_string::set_allocated_value(::std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_string.value)
 }
 
-inline const Shared_string* Shared_string::internal_default_instance() {
-  return &Shared_string_default_instance_.get();
-}
 // -------------------------------------------------------------------
 
 // Network
@@ -2161,20 +2153,17 @@ Network::computers() const {
   return computers_;
 }
 
-inline const Network* Network::internal_default_instance() {
-  return &Network_default_instance_.get();
-}
 // -------------------------------------------------------------------
 
 // Task
 
-// optional string task_name = 1;
+// string task_name = 1;
 inline void Task::clear_task_name() {
   task_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& Task::task_name() const {
   // @@protoc_insertion_point(field_get:ProtobufMIST.Task.task_name)
-  return task_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return task_name_.GetNoArena();
 }
 inline void Task::set_task_name(const ::std::string& value) {
   
@@ -2212,13 +2201,13 @@ inline void Task::set_allocated_task_name(::std::string* task_name) {
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Task.task_name)
 }
 
-// optional string task_id = 2;
+// string task_id = 2;
 inline void Task::clear_task_id() {
   task_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& Task::task_id() const {
   // @@protoc_insertion_point(field_get:ProtobufMIST.Task.task_id)
-  return task_id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return task_id_.GetNoArena();
 }
 inline void Task::set_task_id(const ::std::string& value) {
   
@@ -2256,9 +2245,6 @@ inline void Task::set_allocated_task_id(::std::string* task_id) {
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Task.task_id)
 }
 
-inline const Task* Task::internal_default_instance() {
-  return &Task_default_instance_.get();
-}
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 // -------------------------------------------------------------------
 
@@ -2286,6 +2272,7 @@ inline const Task* Task::internal_default_instance() {
 
 
 // @@protoc_insertion_point(namespace_scope)
+
 
 }  // namespace ProtobufMIST
 

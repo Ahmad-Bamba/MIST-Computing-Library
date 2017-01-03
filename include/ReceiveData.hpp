@@ -12,6 +12,8 @@ typedef unsigned short ushort;
 
 namespace MIST {
     class ReceiveData {
+        //RUN TWICE
+        //First pull out <16> bytes, then parse that to figure out how much more to read after that, then read again
     private:
         asio::io_service service;
         tcp::acceptor acceptor;
@@ -24,7 +26,9 @@ namespace MIST {
         inline std::string receive() {
             std::string message;
             try {
-                acceptor.accept(socket);
+                if (!socket.is_open()) {
+                    acceptor.accept(socket);
+                }
 
                 std::array<char, N> buf;
                 asio::error_code error;
@@ -35,7 +39,7 @@ namespace MIST {
 
                 //std::cout.write(buf.data(), len);
                 std::copy(buf.begin(), buf.end(), std::back_inserter(message));
-                socket.shutdown(tcp::socket::shutdown_type::shutdown_send, error);
+
             } catch(asio::error_code& e) {
                 std::cout << e.message() << std::endl;
                 return "-1";
@@ -44,6 +48,12 @@ namespace MIST {
                 return "-1";
             }
             return message;
+        }
+
+        void stop()
+        {
+            asio::error_code error;
+            socket.shutdown(tcp::socket::shutdown_type::shutdown_send, error);
         }
     };
 }

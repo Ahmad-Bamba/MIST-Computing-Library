@@ -872,7 +872,7 @@ void ComputerInformation::clear_allowedthreads() {
   return allowedthreads_;
 }
 void ComputerInformation::set_allowedthreads(::google::protobuf::uint32 value) {
-  
+
   allowedthreads_ = value;
   // @@protoc_insertion_point(field_set:ProtobufMIST.ComputerInformation.allowedThreads)
 }
@@ -886,7 +886,7 @@ void ComputerInformation::clear_allowedmemory() {
   return allowedmemory_;
 }
 void ComputerInformation::set_allowedmemory(::google::protobuf::uint64 value) {
-  
+
   allowedmemory_ = value;
   // @@protoc_insertion_point(field_set:ProtobufMIST.ComputerInformation.allowedMemory)
 }
@@ -900,7 +900,7 @@ bool ComputerInformation::enableht() const {
   return enableht_;
 }
 void ComputerInformation::set_enableht(bool value) {
-  
+
   enableht_ = value;
   // @@protoc_insertion_point(field_set:ProtobufMIST.ComputerInformation.enableHT)
 }
@@ -914,36 +914,36 @@ const ::std::string& ComputerInformation::name() const {
   return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void ComputerInformation::set_name(const ::std::string& value) {
-  
+
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:ProtobufMIST.ComputerInformation.name)
 }
 void ComputerInformation::set_name(const char* value) {
-  
+
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufMIST.ComputerInformation.name)
 }
 void ComputerInformation::set_name(const char* value, size_t size) {
-  
+
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:ProtobufMIST.ComputerInformation.name)
 }
 ::std::string* ComputerInformation::mutable_name() {
-  
+
   // @@protoc_insertion_point(field_mutable:ProtobufMIST.ComputerInformation.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 ::std::string* ComputerInformation::release_name() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.ComputerInformation.name)
-  
+
   return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void ComputerInformation::set_allocated_name(::std::string* name) {
   if (name != NULL) {
-    
+
   } else {
-    
+
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.ComputerInformation.name)
@@ -958,36 +958,36 @@ const ::std::string& ComputerInformation::address() const {
   return address_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void ComputerInformation::set_address(const ::std::string& value) {
-  
+
   address_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:ProtobufMIST.ComputerInformation.address)
 }
 void ComputerInformation::set_address(const char* value) {
-  
+
   address_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufMIST.ComputerInformation.address)
 }
 void ComputerInformation::set_address(const char* value, size_t size) {
-  
+
   address_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:ProtobufMIST.ComputerInformation.address)
 }
 ::std::string* ComputerInformation::mutable_address() {
-  
+
   // @@protoc_insertion_point(field_mutable:ProtobufMIST.ComputerInformation.address)
   return address_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 ::std::string* ComputerInformation::release_address() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.ComputerInformation.address)
-  
+
   return address_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void ComputerInformation::set_allocated_address(::std::string* address) {
   if (address != NULL) {
-    
+
   } else {
-    
+
   }
   address_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), address);
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.ComputerInformation.address)
@@ -1247,36 +1247,36 @@ const ::std::string& Variable_name::name() const {
   return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void Variable_name::set_name(const ::std::string& value) {
-  
+
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:ProtobufMIST.Variable_name.name)
 }
 void Variable_name::set_name(const char* value) {
-  
+
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufMIST.Variable_name.name)
 }
 void Variable_name::set_name(const char* value, size_t size) {
-  
+
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:ProtobufMIST.Variable_name.name)
 }
 ::std::string* Variable_name::mutable_name() {
-  
+
   // @@protoc_insertion_point(field_mutable:ProtobufMIST.Variable_name.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 ::std::string* Variable_name::release_name() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Variable_name.name)
-  
+
   return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void Variable_name::set_allocated_name(::std::string* name) {
   if (name != NULL) {
-    
+
   } else {
-    
+
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Variable_name.name)
@@ -1572,7 +1572,7 @@ const ::ProtobufMIST::Variable_name& Shared_int64::name() const {
                          : *::ProtobufMIST::Variable_name::internal_default_instance();
 }
 ::ProtobufMIST::Variable_name* Shared_int64::mutable_name() {
-  
+
   if (name_ == NULL) {
     name_ = new ::ProtobufMIST::Variable_name;
   }
@@ -1581,7 +1581,7 @@ const ::ProtobufMIST::Variable_name& Shared_int64::name() const {
 }
 ::ProtobufMIST::Variable_name* Shared_int64::release_name() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Shared_int64.name)
-  
+
   ::ProtobufMIST::Variable_name* temp = name_;
   name_ = NULL;
   return temp;
@@ -1590,9 +1590,9 @@ void Shared_int64::set_allocated_name(::ProtobufMIST::Variable_name* name) {
   delete name_;
   name_ = name;
   if (name) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_int64.name)
 }
@@ -1606,7 +1606,7 @@ void Shared_int64::clear_value() {
   return value_;
 }
 void Shared_int64::set_value(::google::protobuf::int64 value) {
-  
+
   value_ = value;
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_int64.value)
 }
@@ -1901,7 +1901,7 @@ const ::ProtobufMIST::Variable_name& Shared_uint64::name() const {
                          : *::ProtobufMIST::Variable_name::internal_default_instance();
 }
 ::ProtobufMIST::Variable_name* Shared_uint64::mutable_name() {
-  
+
   if (name_ == NULL) {
     name_ = new ::ProtobufMIST::Variable_name;
   }
@@ -1910,7 +1910,7 @@ const ::ProtobufMIST::Variable_name& Shared_uint64::name() const {
 }
 ::ProtobufMIST::Variable_name* Shared_uint64::release_name() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Shared_uint64.name)
-  
+
   ::ProtobufMIST::Variable_name* temp = name_;
   name_ = NULL;
   return temp;
@@ -1919,9 +1919,9 @@ void Shared_uint64::set_allocated_name(::ProtobufMIST::Variable_name* name) {
   delete name_;
   name_ = name;
   if (name) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_uint64.name)
 }
@@ -1935,7 +1935,7 @@ void Shared_uint64::clear_value() {
   return value_;
 }
 void Shared_uint64::set_value(::google::protobuf::uint64 value) {
-  
+
   value_ = value;
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_uint64.value)
 }
@@ -2230,7 +2230,7 @@ const ::ProtobufMIST::Variable_name& Shared_int32::name() const {
                          : *::ProtobufMIST::Variable_name::internal_default_instance();
 }
 ::ProtobufMIST::Variable_name* Shared_int32::mutable_name() {
-  
+
   if (name_ == NULL) {
     name_ = new ::ProtobufMIST::Variable_name;
   }
@@ -2239,7 +2239,7 @@ const ::ProtobufMIST::Variable_name& Shared_int32::name() const {
 }
 ::ProtobufMIST::Variable_name* Shared_int32::release_name() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Shared_int32.name)
-  
+
   ::ProtobufMIST::Variable_name* temp = name_;
   name_ = NULL;
   return temp;
@@ -2248,9 +2248,9 @@ void Shared_int32::set_allocated_name(::ProtobufMIST::Variable_name* name) {
   delete name_;
   name_ = name;
   if (name) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_int32.name)
 }
@@ -2264,7 +2264,7 @@ void Shared_int32::clear_value() {
   return value_;
 }
 void Shared_int32::set_value(::google::protobuf::int64 value) {
-  
+
   value_ = value;
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_int32.value)
 }
@@ -2559,7 +2559,7 @@ const ::ProtobufMIST::Variable_name& Shared_uint32::name() const {
                          : *::ProtobufMIST::Variable_name::internal_default_instance();
 }
 ::ProtobufMIST::Variable_name* Shared_uint32::mutable_name() {
-  
+
   if (name_ == NULL) {
     name_ = new ::ProtobufMIST::Variable_name;
   }
@@ -2568,7 +2568,7 @@ const ::ProtobufMIST::Variable_name& Shared_uint32::name() const {
 }
 ::ProtobufMIST::Variable_name* Shared_uint32::release_name() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Shared_uint32.name)
-  
+
   ::ProtobufMIST::Variable_name* temp = name_;
   name_ = NULL;
   return temp;
@@ -2577,9 +2577,9 @@ void Shared_uint32::set_allocated_name(::ProtobufMIST::Variable_name* name) {
   delete name_;
   name_ = name;
   if (name) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_uint32.name)
 }
@@ -2593,7 +2593,7 @@ void Shared_uint32::clear_value() {
   return value_;
 }
 void Shared_uint32::set_value(::google::protobuf::uint64 value) {
-  
+
   value_ = value;
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_uint32.value)
 }
@@ -2891,7 +2891,7 @@ const ::ProtobufMIST::Variable_name& Shared_bytes::name() const {
                          : *::ProtobufMIST::Variable_name::internal_default_instance();
 }
 ::ProtobufMIST::Variable_name* Shared_bytes::mutable_name() {
-  
+
   if (name_ == NULL) {
     name_ = new ::ProtobufMIST::Variable_name;
   }
@@ -2900,7 +2900,7 @@ const ::ProtobufMIST::Variable_name& Shared_bytes::name() const {
 }
 ::ProtobufMIST::Variable_name* Shared_bytes::release_name() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Shared_bytes.name)
-  
+
   ::ProtobufMIST::Variable_name* temp = name_;
   name_ = NULL;
   return temp;
@@ -2909,9 +2909,9 @@ void Shared_bytes::set_allocated_name(::ProtobufMIST::Variable_name* name) {
   delete name_;
   name_ = name;
   if (name) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_bytes.name)
 }
@@ -2925,36 +2925,36 @@ const ::std::string& Shared_bytes::value() const {
   return value_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void Shared_bytes::set_value(const ::std::string& value) {
-  
+
   value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_bytes.value)
 }
 void Shared_bytes::set_value(const char* value) {
-  
+
   value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufMIST.Shared_bytes.value)
 }
 void Shared_bytes::set_value(const void* value, size_t size) {
-  
+
   value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:ProtobufMIST.Shared_bytes.value)
 }
 ::std::string* Shared_bytes::mutable_value() {
-  
+
   // @@protoc_insertion_point(field_mutable:ProtobufMIST.Shared_bytes.value)
   return value_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 ::std::string* Shared_bytes::release_value() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Shared_bytes.value)
-  
+
   return value_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void Shared_bytes::set_allocated_value(::std::string* value) {
   if (value != NULL) {
-    
+
   } else {
-    
+
   }
   value_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_bytes.value)
@@ -3248,7 +3248,7 @@ const ::ProtobufMIST::Variable_name& Shared_bool::name() const {
                          : *::ProtobufMIST::Variable_name::internal_default_instance();
 }
 ::ProtobufMIST::Variable_name* Shared_bool::mutable_name() {
-  
+
   if (name_ == NULL) {
     name_ = new ::ProtobufMIST::Variable_name;
   }
@@ -3257,7 +3257,7 @@ const ::ProtobufMIST::Variable_name& Shared_bool::name() const {
 }
 ::ProtobufMIST::Variable_name* Shared_bool::release_name() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Shared_bool.name)
-  
+
   ::ProtobufMIST::Variable_name* temp = name_;
   name_ = NULL;
   return temp;
@@ -3266,9 +3266,9 @@ void Shared_bool::set_allocated_name(::ProtobufMIST::Variable_name* name) {
   delete name_;
   name_ = name;
   if (name) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_bool.name)
 }
@@ -3282,7 +3282,7 @@ bool Shared_bool::value() const {
   return value_;
 }
 void Shared_bool::set_value(bool value) {
-  
+
   value_ = value;
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_bool.value)
 }
@@ -3575,7 +3575,7 @@ const ::ProtobufMIST::Variable_name& Shared_float::name() const {
                          : *::ProtobufMIST::Variable_name::internal_default_instance();
 }
 ::ProtobufMIST::Variable_name* Shared_float::mutable_name() {
-  
+
   if (name_ == NULL) {
     name_ = new ::ProtobufMIST::Variable_name;
   }
@@ -3584,7 +3584,7 @@ const ::ProtobufMIST::Variable_name& Shared_float::name() const {
 }
 ::ProtobufMIST::Variable_name* Shared_float::release_name() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Shared_float.name)
-  
+
   ::ProtobufMIST::Variable_name* temp = name_;
   name_ = NULL;
   return temp;
@@ -3593,9 +3593,9 @@ void Shared_float::set_allocated_name(::ProtobufMIST::Variable_name* name) {
   delete name_;
   name_ = name;
   if (name) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_float.name)
 }
@@ -3609,7 +3609,7 @@ float Shared_float::value() const {
   return value_;
 }
 void Shared_float::set_value(float value) {
-  
+
   value_ = value;
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_float.value)
 }
@@ -3902,7 +3902,7 @@ const ::ProtobufMIST::Variable_name& Shared_double::name() const {
                          : *::ProtobufMIST::Variable_name::internal_default_instance();
 }
 ::ProtobufMIST::Variable_name* Shared_double::mutable_name() {
-  
+
   if (name_ == NULL) {
     name_ = new ::ProtobufMIST::Variable_name;
   }
@@ -3911,7 +3911,7 @@ const ::ProtobufMIST::Variable_name& Shared_double::name() const {
 }
 ::ProtobufMIST::Variable_name* Shared_double::release_name() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Shared_double.name)
-  
+
   ::ProtobufMIST::Variable_name* temp = name_;
   name_ = NULL;
   return temp;
@@ -3920,9 +3920,9 @@ void Shared_double::set_allocated_name(::ProtobufMIST::Variable_name* name) {
   delete name_;
   name_ = name;
   if (name) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_double.name)
 }
@@ -3936,7 +3936,7 @@ double Shared_double::value() const {
   return value_;
 }
 void Shared_double::set_value(double value) {
-  
+
   value_ = value;
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_double.value)
 }
@@ -4246,7 +4246,7 @@ const ::ProtobufMIST::Variable_name& Shared_string::name() const {
                          : *::ProtobufMIST::Variable_name::internal_default_instance();
 }
 ::ProtobufMIST::Variable_name* Shared_string::mutable_name() {
-  
+
   if (name_ == NULL) {
     name_ = new ::ProtobufMIST::Variable_name;
   }
@@ -4255,7 +4255,7 @@ const ::ProtobufMIST::Variable_name& Shared_string::name() const {
 }
 ::ProtobufMIST::Variable_name* Shared_string::release_name() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Shared_string.name)
-  
+
   ::ProtobufMIST::Variable_name* temp = name_;
   name_ = NULL;
   return temp;
@@ -4264,9 +4264,9 @@ void Shared_string::set_allocated_name(::ProtobufMIST::Variable_name* name) {
   delete name_;
   name_ = name;
   if (name) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_string.name)
 }
@@ -4280,36 +4280,36 @@ const ::std::string& Shared_string::value() const {
   return value_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void Shared_string::set_value(const ::std::string& value) {
-  
+
   value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:ProtobufMIST.Shared_string.value)
 }
 void Shared_string::set_value(const char* value) {
-  
+
   value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufMIST.Shared_string.value)
 }
 void Shared_string::set_value(const char* value, size_t size) {
-  
+
   value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:ProtobufMIST.Shared_string.value)
 }
 ::std::string* Shared_string::mutable_value() {
-  
+
   // @@protoc_insertion_point(field_mutable:ProtobufMIST.Shared_string.value)
   return value_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 ::std::string* Shared_string::release_value() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Shared_string.value)
-  
+
   return value_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void Shared_string::set_allocated_value(::std::string* value) {
   if (value != NULL) {
-    
+
   } else {
-    
+
   }
   value_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Shared_string.value)
@@ -4889,36 +4889,36 @@ const ::std::string& Task::task_name() const {
   return task_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void Task::set_task_name(const ::std::string& value) {
-  
+
   task_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:ProtobufMIST.Task.task_name)
 }
 void Task::set_task_name(const char* value) {
-  
+
   task_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufMIST.Task.task_name)
 }
 void Task::set_task_name(const char* value, size_t size) {
-  
+
   task_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:ProtobufMIST.Task.task_name)
 }
 ::std::string* Task::mutable_task_name() {
-  
+
   // @@protoc_insertion_point(field_mutable:ProtobufMIST.Task.task_name)
   return task_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 ::std::string* Task::release_task_name() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Task.task_name)
-  
+
   return task_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void Task::set_allocated_task_name(::std::string* task_name) {
   if (task_name != NULL) {
-    
+
   } else {
-    
+
   }
   task_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), task_name);
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Task.task_name)
@@ -4933,36 +4933,36 @@ const ::std::string& Task::task_id() const {
   return task_id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void Task::set_task_id(const ::std::string& value) {
-  
+
   task_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:ProtobufMIST.Task.task_id)
 }
 void Task::set_task_id(const char* value) {
-  
+
   task_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufMIST.Task.task_id)
 }
 void Task::set_task_id(const char* value, size_t size) {
-  
+
   task_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:ProtobufMIST.Task.task_id)
 }
 ::std::string* Task::mutable_task_id() {
-  
+
   // @@protoc_insertion_point(field_mutable:ProtobufMIST.Task.task_id)
   return task_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 ::std::string* Task::release_task_id() {
   // @@protoc_insertion_point(field_release:ProtobufMIST.Task.task_id)
-  
+
   return task_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void Task::set_allocated_task_id(::std::string* task_id) {
   if (task_id != NULL) {
-    
+
   } else {
-    
+
   }
   task_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), task_id);
   // @@protoc_insertion_point(field_set_allocated:ProtobufMIST.Task.task_id)

@@ -1,15 +1,7 @@
-// This file exists to facilitate testing
+//This file exists to facilitate testing
+//Do not touch me please :3
 
 #include <asio.hpp>
-#include <Task.hpp>
 #include <MIST.hpp>
+#include <SendData.hpp>
 #include <ReceiveData.hpp>
-
-int main() {
-    MIST::ReceiveData receiveObj;
-
-    std::string s = receiveObj.receive<64>();
-    std::cout << "Message received: '" << s << "'" << std::endl;
-
-    return 0;
-}

@@ -10,6 +10,15 @@ if [ ! -d "$DIRECTORY" ]; then
     tar -xvf "asio-1.10.8.tar.gz"
 fi
 
-printf "\nBuilding...\n"
-g++ -std=c++1y -Iasio-1.10.8/include/ -Iinclude/ -Iprotobuf_files -c -lpthread src/*.cpp -lprotobuf -o a.o
+anum="$#"
+
+if [ "$anum" -gt 0 ]; then
+    printf "\nBuilding with $1\n"
+    build="g++ $1 -std=c++1y -Iasio-1.10.8/include/ -Iinclude/ -Iprotobuf_files/ -lpthread -lprotobuf -c -o a.o"
+    eval $build
+else
+    printf "\nBuilding...\n"
+    g++ -std=c++1y -Iasio-1.10.8/include/ -Iinclude/ -Iprotobuf_files -c -lpthread src/MIST.cpp -lprotobuf -o a.o
+fi
+
 printf "Exited with code $?\n"
