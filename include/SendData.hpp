@@ -43,7 +43,11 @@ namespace MIST {
             asio::connect(this->socket, this->endpoint_iterator);
             //asio::error_code ignored_error;
             //SendJobs[id].isComplete = true;
-            return asio::write(socket, asio::buffer(dataToSend.c_str(), dataToSend.length()));
+            std::string MISTCompliant = "AAAABBBB"; //identifies the type of data, can be checked by user, is checked by MIST
+            dataToSend += "^^^^^^^^";
+            MISTCompliant += dataToSend;
+            return asio::write(socket, asio::buffer(MISTCompliant.c_str(), MISTCompliant.length())); //identifier sent
+            //return asio::write(socket, asio::buffer(dataToSend.c_str(), dataToSend.length()));
         }; //actually sends the string
 
         void thread_cleanup_loop() {
@@ -78,14 +82,15 @@ namespace MIST {
            this->IP = IP;
            this->port = port;
            this->endpoint_iterator = resolver.resolve(this->query);
+
         }; //creates at minimum one thread (for cleanup_loop)
         ~SendData() { };
 
         inline void Send(std::string data, std::string IP) {
             //Is this necessary?
-            size_t size;
-            size = data.size();
-            data.insert(data.begin(), size);
+            //size_t size;
+            //size = data.size();
+            //data.insert(data.begin(), size);
             std::thread * t = new std::thread(&SendData::send_string, this, data, number_of_send_jobs + 1);
             Job j;
             j.isComplete = false;
