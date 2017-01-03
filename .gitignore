@@ -35,6 +35,7 @@ asio-*/*
 #*.proto
 protobuf-master/*
 protobuf_files/MIST.pb.*
+protobuf/
 
 #projectfiles
 Debug/*

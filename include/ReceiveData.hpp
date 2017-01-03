@@ -24,7 +24,8 @@ namespace MIST {
         inline std::string receive() {
             std::string message;
             try {
-                acceptor.accept(socket);
+                if(!socket.is_open())
+                    acceptor.accept(socket);
 
                 std::array<char, N> buf;
                 asio::error_code error;

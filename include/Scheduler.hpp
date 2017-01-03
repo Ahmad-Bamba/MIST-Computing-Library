@@ -2,6 +2,7 @@
 
 #include <MIST_Internal.hpp>
 #include <ReceiveData.hpp>
+#include <MIST.pb.h>
 #include <Task.hpp>
 #include <vector>
 #include <memory>
@@ -41,18 +42,29 @@ public:
     }
 
     void check_for_tasks() {
+        std::string message = "";
+        bool end = false;
+        auto rd = std::make_shared<MIST::ReceiveData>();
+        auto parsed = std::make_shared<ProtobufMIST::Task>();
+
         while(this->running) {
-            // It's time for pseudocode.
-            /*
-             * message = socket.get
-             * found = len(message) > 0 ? true : false
-             * if found:
-             *      if id_valid(message):
-             *          for task in task_queue:
-             *              if task.id == message:
-             *                  t = std::thread(task.run)
-             *                  t.join()
-             */
+            while(!end) {
+                std::string x = rd->receive<4>();
+                if(x == "^^^^")
+                    end = true;
+                else
+                    message += x;
+            }
+
+            if(parsed->ParseFromString(message)) {
+                for(auto task : task_queue) {
+                    if(task->getID() == parsed->task_name()) {
+                        auto t = std::make_shared<std::thread>(&MIST::Task::run, task);
+                        t->join();
+                        t = nullptr;
+                    }
+                }
+            }
         }
     }
 
