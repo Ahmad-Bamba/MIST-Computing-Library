@@ -43,7 +43,11 @@ namespace MIST {
             asio::connect(this->socket, this->endpoint_iterator);
             //asio::error_code ignored_error;
             //SendJobs[id].isComplete = true;
-            return asio::write(socket, asio::buffer(dataToSend.c_str(), dataToSend.length()));
+            std::string MISTCompliant = "AAAABBBB"; //identifies the type of data, can be checked by user, is checked by MIST
+            dataToSend += "^^^^^^^^";
+            MISTCompliant += dataToSend;
+            return asio::write(socket, asio::buffer(MISTCompliant.c_str(), MISTCompliant.length())); //identifier sent
+            //return asio::write(socket, asio::buffer(dataToSend.c_str(), dataToSend.length()));
         }; //actually sends the string
 
         void thread_cleanup_loop() {
