@@ -19,7 +19,7 @@ public:
     ReceiveData(ushort port = 8008) : acceptor(service, tcp::endpoint(tcp::v4(), port)),
                                socket(service) { }
 
-    //Can return any amount on the socket stream
+    // Can return any amount on the socket stream
     template<size_t N>
     inline std::string receive() {
         std::string message;

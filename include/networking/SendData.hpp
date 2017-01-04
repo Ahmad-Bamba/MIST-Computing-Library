@@ -42,7 +42,7 @@ public:
     };
     ~SendData() { };
 
-    //EXTREME ASIO WRAPPING!!!
+    // EXTREME ASIO WRAPPING!!!
     inline size_t Send(std::string data, const char &separator) {
         return send_string(data, separator);
     };

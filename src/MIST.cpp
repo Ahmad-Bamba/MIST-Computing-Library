@@ -5,3 +5,5 @@
 #include <MIST.hpp>
 #include <networking/SendData.hpp>
 #include <networking/ReceiveData.hpp>
+#include <shared_variable/SharedVariableBase.hpp>
+#include <shared_variable/SharedVariable.hpp>
