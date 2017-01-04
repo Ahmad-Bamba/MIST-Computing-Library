@@ -3,5 +3,5 @@
 
 #include <asio.hpp>
 #include <MIST.hpp>
-#include <SendData.hpp>
-#include <ReceiveData.hpp>
+#include <networking/SendData.hpp>
+#include <networking/ReceiveData.hpp>
