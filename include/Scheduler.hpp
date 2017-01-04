@@ -42,29 +42,35 @@ public:
     }
 
     void check_for_tasks() {
-        std::string message = "";
-        bool end = false;
-        auto rd = std::make_shared<MIST::ReceiveData>();
-        auto parsed = std::make_shared<ProtobufMIST::Task>();
-
         while(this->running) {
+            auto rdo = std::make_shared<MIST::ReceiveData>();
+            bool end = false;
+            std::string message = "";
+            auto parsed = std::make_shared<ProtobufMIST::Task>();
+
             while(!end) {
-                std::string x = rd->receive<4>();
-                if(x == "^^^^")
+                std::string x = rdo->receive<1>();
+                if( (x.find(MIST::Internal::delimiter) != std::string::npos) || x == "-1") {
                     end = true;
-                else
+                } else {
                     message += x;
+                }
             }
 
             if(parsed->ParseFromString(message)) {
-                for(auto task : task_queue) {
-                    if(task->getID() == parsed->task_name()) {
+                for(auto task : this->task_queue) {
+                    if(parsed->task_name() == task->getID()) {
                         auto t = std::make_shared<std::thread>(&MIST::Task::run, task);
                         t->join();
                         t = nullptr;
                     }
                 }
+            } else {
+                std::cout << "Warning: Could not parse message as task. "
+                             "This does not necessarily mean something has gone wrong.\n";
             }
+            rdo = nullptr;
+            parsed = nullptr;
         }
     }
 
