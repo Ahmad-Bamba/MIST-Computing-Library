@@ -1,7 +1,7 @@
 #pragma once
 
 #include <MIST_Internal.hpp>
-#include <ReceiveData.hpp>
+#include <networking/ReceiveData.hpp>
 #include <MIST.pb.h>
 #include <Task.hpp>
 #include <vector>
@@ -43,7 +43,7 @@ public:
 
     void check_for_tasks() {
         while(this->running) {
-            auto rdo = std::make_shared<MIST::ReceiveData>();
+            auto rdo = std::make_shared<ReceiveData>();
             bool end = false;
             std::string message = "";
             auto parsed = std::make_shared<ProtobufMIST::Task>();
