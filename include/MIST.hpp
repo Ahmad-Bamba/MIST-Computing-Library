@@ -9,78 +9,61 @@
 #include <vector>
 #include <memory>
 #include <asio.hpp>
+#include <Machine.hpp>
 
 namespace MIST {
     class MIST {
     private:
-
-    	struct computerHardware
-    	{
-    	    unsigned long allowedThreads;
-    	    unsigned long long allowedMemory;
-    	    bool enableHT;
-    	};
-
-    	struct MISTHost
-    	{
-            std::string name;
-    	    bool isLocal; //is it this computer?
-    	    std::string address; //what address is it? "local" for if it's local
-            computerHardware computer; //What hardware does it have?
-    	};
-
-    	computerHardware thisComputer; //this computer
-    	MISTHost local; //this computer
-
-        std::vector<MISTHost> Hosts;
+    	Machine* local;
         std::shared_ptr<Scheduler> scheduler;
-        bool is_master;
-
-        /*void send(auto message) {
-            //send message using ASIO
-        }*/
-
+        std::vector<Machine> machines;
+        bool is_master; //unimplemented for now
     public:
-        MIST(bool is_master) {
+        MIST(bool is_master, Machine local) {
             scheduler = std::make_shared<Scheduler>();
+            machines.push_back(local);
             this->is_master = is_master;
+            this->local = &local;
         }
 
-        ~MIST() = default;
-		//LOCAL INITIALIZATION
-
-		void InitComputer(unsigned long threads = 1, unsigned long long memory = 2048, std::string name = "Unnamed, Unloved Computer", std::string address = "0.0.0.0", bool enableHT = false) {
-            local.isLocal = true;
-            local.address = "local";
-            local.computer.allowedMemory = memory;
-            local.computer.allowedThreads = threads;
-            local.name = name;
-            local.computer.enableHT = enableHT;
-		}
-		void setThreads(unsigned long threads) {
-            local.computer.allowedThreads = threads;
-		}
-		void setMemory(unsigned long long memory) {
-            local.computer.allowedMemory = memory;
-		}
-		void enableHT(bool enableHT) {
-            local.computer.enableHT = enableHT;
-		}
-		void setName(std::string computerName) {
-            local.name = computerName;
-		}
-		void setAddress(std::string address) {
-            local.address = address;
-		}
-
-		//NETWORK INITIALIZATION
-        void inviteMachine(std::string IP) { //invites machine to network (changed from addMachine to signify that only master machine can do this)
-            //Perhaps accomplish this by creating an invite task in MIST.hpp that sends information back to this machine?
+        ~MIST() {
+            scheduler.reset();
+            machines.empty();
+            delete local;
         }
 
-  /*    void sendTask(std::shared_ptr<Task<auto>> task) {
-           send(task.getID());
-        }*/
+        MIST(bool is_master, std::vector<Machine> machines, int local_index = 0) {
+            scheduler = std::make_shared<Scheduler>();
+            this->machines = machines;
+            this->is_master = is_master;
+            local = &this->machines[local_index];
+        }
 
+        void addMachine(Machine machine) {
+            this->machines.push_back(machine);
+        }
+
+        void removeMachine(std::string name) {
+            std::vector<Machine> v;
+            for(auto m : this->machines) {
+                if(!(m.name == name)) {
+                    v.push_back(m);
+                }
+            }
+
+            machines = v;
+        }
+
+        void addTask(std::string id, MIST_taskfunc fn) {
+            scheduler->updateTaskVector(id, fn);
+        }
+
+        void sendTask(std::string serialized_task, std::string machine_name, short int port = 8008) {
+            for(auto machine : machines) {
+                if(machine.name == machine_name) {
+                    scheduler->sendTask(serialized_task, machine, port);
+                }
+            }
+        }
     };
 }
