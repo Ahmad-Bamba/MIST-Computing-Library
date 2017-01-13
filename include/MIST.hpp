@@ -54,6 +54,8 @@ namespace MIST {
             machines = v;
         }
 
+        Machine* get_local() { return local; }
+
         void add_task(std::string id, MIST_taskfunc fn) {
             scheduler->update_task_vector(id, fn);
         }
