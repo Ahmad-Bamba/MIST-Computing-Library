@@ -39,11 +39,11 @@ namespace MIST {
             local = &this->machines[local_index];
         }
 
-        void addMachine(Machine machine) {
+        void add_machine(Machine machine) {
             this->machines.push_back(machine);
         }
 
-        void removeMachine(std::string name) {
+        void remove_machine(std::string name) {
             std::vector<Machine> v;
             for(auto m : this->machines) {
                 if(!(m.name == name)) {
@@ -54,14 +54,14 @@ namespace MIST {
             machines = v;
         }
 
-        void addTask(std::string id, MIST_taskfunc fn) {
-            scheduler->updateTaskVector(id, fn);
+        void add_task(std::string id, MIST_taskfunc fn) {
+            scheduler->update_task_vector(id, fn);
         }
 
-        void sendTask(std::string serialized_task, std::string machine_name, short int port = 8008) {
+        void send_task(std::string serialized_task, std::string machine_name, short int port = 8008) {
             for(auto machine : machines) {
                 if(machine.name == machine_name) {
-                    scheduler->sendTask(serialized_task, machine, port);
+                    scheduler->send_task(serialized_task, machine, port);
                 }
             }
         }

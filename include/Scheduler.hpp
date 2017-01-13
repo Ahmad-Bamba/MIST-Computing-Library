@@ -18,21 +18,21 @@ private:
 public:
     Scheduler(std::vector<MIST::Task*> task_queue = {}) {
         this->task_queue = task_queue;
-        Start();
+        start();
     }
 
     ~Scheduler() {
         //Make sure threads are close
-        Stop();
+        stop();
         //empty task_queue to prevent evil raw pointers from ruining program
         task_queue.empty();
     }
 
-    inline void updateTaskVector(std::string id, MIST_taskfunc fn) {
+    inline void update_task_vector(std::string id, MIST_taskfunc fn) {
         task_queue.push_back(new MIST::Task(id, fn));
     }
 
-    inline void removeTask(std::string id) {
+    inline void remove_task(std::string id) {
         std::vector<MIST::Task*> copy = {};
         for(auto t : task_queue) {
             if(t->getID() != id) {
@@ -75,13 +75,13 @@ public:
         }
     }
 
-    inline void Start() {
+    inline void start() {
         this->running = true;
         this->checker = new std::thread(&Scheduler::check_for_tasks, this);
     }
 
     //run in new thread
-    inline void runTask(std::string id) {
+    inline void run_task(std::string id) {
         for(auto task : this->task_queue) {
             if(id == task->getID()) {
                 task->run();
@@ -90,7 +90,7 @@ public:
     }
 
     //run all specified tasks concurrently
-    inline void runTask(std::vector<std::string> ids) {
+    inline void run_task(std::vector<std::string> ids) {
         std::vector<std::thread*> threads;
         for(auto id : ids) {
             for(auto task : task_queue) {
@@ -107,12 +107,12 @@ public:
         threads.empty();
     }
 
-    inline void sendTask(std::string task, MIST::Machine machine, short int port) {
+    inline void send_task(std::string task, MIST::Machine machine, short int port) {
         SendData* sd = new SendData(machine.address, port);
         sd->simple_send(task);
     }
 
-    inline void Stop() {
+    inline void stop() {
         this->running = false;
         delete checker;
     }
