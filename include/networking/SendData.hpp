@@ -1,5 +1,14 @@
 #pragma once
-//#include "MIST_Internal.hpp"
+
+#ifdef __GNUC__
+#define DEPRECATED(func) func __attribute__ ((deprecated))
+#elif defined(_MSC_VER)
+#define DEPRECATED(func) __declspec(deprecated) func
+#else
+#pragma message("WARNING: You need to implement DEPRECATED for this compiler")
+#define DEPRECATED(func) func
+#endif
+
 #include <asio.hpp>
 #include <chrono>
 #include <vector>
@@ -7,7 +16,6 @@
 #include <tuple>
 
 using asio::ip::tcp;
-
 typedef unsigned short ushort;
 
 class SendData {
@@ -21,13 +29,16 @@ private:
     std::string IP;
     ushort port;
 
-    inline size_t send_string(std::string dataToSend, const char &separator = '\0') {
+    inline void send_string(std::string dataToSend, const char &separator = '\0') {
         if(!this->socket.is_open()) {
             asio::connect(this->socket, this->endpoint_iterator);
         }
         std::string MISTCompliant = dataToSend;
         MISTCompliant.push_back(separator);
-        return asio::write(socket, asio::buffer(MISTCompliant.c_str(), MISTCompliant.length()));
+        auto t = std::make_shared<std::thread>([=]() {
+            asio::write(socket, asio::buffer(MISTCompliant.c_str(), MISTCompliant.length()));
+        });
+        t->detach();
     };
 
 public:
@@ -38,17 +49,13 @@ public:
        this->IP = IP;
        this->port = port;
        this->endpoint_iterator = resolver.resolve(this->query);
-
-    };
-    ~SendData() { };
+   };
 
     // EXTREME ASIO WRAPPING!!!
-    inline size_t send(std::string data, const char &separator) {
-        return send_string(data, separator);
-    };
+    DEPRECATED(void simple_send(std::string data));
 
-    inline void simple_send(std::string data) {
-        send_string(data);
+    inline void send(std::string data, const char &separator = '\0') {
+        send_string(data, separator);
     }
 
     inline std::tuple<std::string, ushort> get_raw_info() {

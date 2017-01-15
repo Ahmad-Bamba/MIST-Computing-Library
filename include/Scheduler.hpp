@@ -109,7 +109,7 @@ public:
 
     inline void send_task(std::string task, MIST::Machine machine, short int port) {
         SendData* sd = new SendData(machine.address, port);
-        sd->simple_send(task);
+        sd->send(task, (char)182);
         delete sd;
     }
 
