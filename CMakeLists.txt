@@ -8,6 +8,8 @@ include_directories(${CMAKE_SOURCE_DIR}/protobuf/src/)
 include_directories(${CMAKE_SOURCE_DIR}/asio-1.10.8/include/)
 include_directories(${CMAKE_SOURCE_DIR}/include/)
 
+add_definitions(-DASIO_STANDALONE)
+
 file(GLOB_RECURSE Mist_Files ${CMAKE_SOURCE_DIR}/include/*.hpp)
 
 add_library(MistComputingLibrary SHARED ${Mist_files} src/MIST.cpp)

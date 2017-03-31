@@ -48,19 +48,19 @@ message Shared_bytes
 
 message Shared_bool
 {
-	Variable_name name = 1; 
+	Variable_name name = 1;
 	bool value = 2;
 };
 
 message Shared_float
 {
-	Variable_name name = 1; 
+	Variable_name name = 1;
 	float value = 2;
 };
 
 message Shared_double
 {
-	Variable_name name = 1; 
+	Variable_name name = 1;
 	double value = 2;
 };
 
