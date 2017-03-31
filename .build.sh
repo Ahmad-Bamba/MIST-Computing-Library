@@ -7,7 +7,9 @@ fi
 
 # this should be false on users, but true on travis
 if [ ! -f protobuf_files/MIST.pb.h ]; then
+    echo "MIST.pb files not found. Generating from protoc..."
     protoc -I=protobuf_files/ --cpp_out=protobuf_files/ protobuf_files/MIST.proto
+    echo "protoc exited with code: $?"
 fi
 
 if [ ! -d "$DIRECTORY" ]; then
