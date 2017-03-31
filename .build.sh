@@ -15,18 +15,6 @@ cd .build/
 cmake ..
 make
 
-printf "Exited with code $?\n"
-
-c='
-
-anum="$#"
-
-if [ "$anum" -gt 0 ]; then
-    printf "\nBuilding with $1\n"
-    build="g++ $1 -std=c++1y -Iasio-1.10.8/include/ -Iinclude/ -Iprotobuf_files/ -lpthread -lprotobuf -c -o a.o"
-    eval $build
-else
-    printf "\nBuilding...\n"
-    g++ -std=c++1y -Iasio-1.10.8/include/ -Iinclude/ -Iprotobuf_files -c -lpthread src/MIST.cpp -lprotobuf -o a.o
-fi
-'
+exitval=$?
+printf "Exited with code $exitval\n"
+exit $exitval
