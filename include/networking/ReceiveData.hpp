@@ -19,7 +19,7 @@ public:
     ReceiveData(ushort port = 8008) : acceptor(service, tcp::endpoint(tcp::v4(), port)),
                                socket(service) { }
 
-    //Can return any amount on the socket stream
+    // Can return any amount on the socket stream
     template<size_t N>
     inline std::string receive() {
         std::string message;
@@ -47,7 +47,7 @@ public:
         return message;
     }
 
-    void inline stop() {
+    inline void stop() {
         asio::error_code error;
         socket.shutdown(tcp::socket::shutdown_type::shutdown_send, error);
     }

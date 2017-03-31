@@ -16,6 +16,7 @@ addons:
             - automake
             - libtool
             - curl
+            - cmake
             - make
             - unzip
 install:
