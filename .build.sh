@@ -11,7 +11,7 @@ echo "protoc exited with code: $?"
 
 if [ ! -d "$DIRECTORY" ]; then
     wget "http://learn612.000webhostapp.com/asio-1.10.8.tar.gz"
-    tar -xvf "asio-1.10.8.tar.gz"
+    tar -xf "asio-1.10.8.tar.gz"
 fi
 
 mkdir .build/
