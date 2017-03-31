@@ -2,7 +2,9 @@ VERSION="1.10.8"
 DIRECTORY="asio-$VERSION"
 
 if [ ! -f /usr/local/lib/libprotobuf.so ]; then
-    ./.protobuf_dl.sh
+    echo "Downloading and installing protobuf and protoc (silent)..."
+    ./.protobuf_dl.sh 1>/dev/null 2>&1
+    echo "Finished setting up protobuf with code $?"
 fi
 
 # this should be false on users, but true on travis

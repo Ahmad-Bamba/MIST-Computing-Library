@@ -22,6 +22,6 @@ addons:
             - unzip
 install:
     - CC=gcc-4.9 CXX=g++-4.9
-script: ./.build.sh
+script: travis_wait ./.build.sh
 
 #what?
