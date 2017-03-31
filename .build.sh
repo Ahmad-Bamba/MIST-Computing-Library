@@ -10,6 +10,15 @@ if [ ! -d "$DIRECTORY" ]; then
     tar -xvf "asio-1.10.8.tar.gz"
 fi
 
+mkdir .build/
+cd .build/
+cmake ..
+make
+
+printf "Exited with code $?\n"
+
+c='
+
 anum="$#"
 
 if [ "$anum" -gt 0 ]; then
@@ -20,5 +29,4 @@ else
     printf "\nBuilding...\n"
     g++ -std=c++1y -Iasio-1.10.8/include/ -Iinclude/ -Iprotobuf_files -c -lpthread src/MIST.cpp -lprotobuf -o a.o
 fi
-
-printf "Exited with code $?\n"
+'

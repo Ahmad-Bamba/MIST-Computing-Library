@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 namespace MIST {
     struct Machine {
         std::string name;
