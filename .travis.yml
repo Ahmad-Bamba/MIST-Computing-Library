@@ -3,6 +3,7 @@ complier: g++
 sudo: required
 before-install:
     - chmod +x .build.sh
+    - chmod +x .protobuf_dl.sh
 addons:
     apt:
         sources:
