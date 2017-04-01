@@ -9,7 +9,8 @@ addons:
         sources:
             - ubuntu-toolchain-r-test
         packages:
-            - g++-4.9
+            - g++-5
+            - gcc-5
             - libboost-dev
             - libboost-system-dev
             - git
@@ -21,7 +22,7 @@ addons:
             - make
             - unzip
 install:
-    - CC=gcc-4.9 CXX=g++-4.9
+    - CC=gcc-5 CXX=g++-5
 script: travis_wait 30 ./.build.sh
 
 #what?
