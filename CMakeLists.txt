@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.8)
 
 project(Mist-Computing-Library CXX)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD $ENV{cpp_vers})
 set(CMAKE_CXX_STANDARD_REQUIRED on)
 
 include_directories(${CMAKE_SOURCE_DIR}/protobuf_files/)

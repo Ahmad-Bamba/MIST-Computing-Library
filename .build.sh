@@ -21,6 +21,7 @@ fi
 
 mkdir .build/
 cd .build/
+export cpp_vers=11
 cmake ..
 make
 
