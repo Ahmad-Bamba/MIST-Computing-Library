@@ -2,23 +2,29 @@ VERSION="1.10.8"
 DIRECTORY="asio-$VERSION"
 
 if [ ! -f /usr/local/lib/libprotobuf.so ]; then
-    ./.protobuf_dl.sh
+    echo "Downloading and installing protobuf and protoc (silent)..."
+    ./.protobuf_dl.sh 1>/dev/null 2>&1
+    echo "Finished setting up protobuf with code $?"
+fi
+
+# this should be false on users, but true on travis
+if [ ! -f protobuf_files/MIST.pb.h ]; then
+    echo "MIST.pb files not found. Generating from protoc..."
+    protoc -I=protobuf_files/ --cpp_out=protobuf_files/ protobuf_files/MIST.proto
+    echo "protoc exited with code: $?"
 fi
 
 if [ ! -d "$DIRECTORY" ]; then
     wget "http://learn612.000webhostapp.com/asio-1.10.8.tar.gz"
-    tar -xvf "asio-1.10.8.tar.gz"
+    tar -xf "asio-1.10.8.tar.gz"
 fi
 
-anum="$#"
+mkdir .build/
+cd .build/
+export cpp_vers=11
+cmake ..
+make
 
-if [ "$anum" -gt 0 ]; then
-    printf "\nBuilding with $1\n"
-    build="g++ $1 -std=c++1y -Iasio-1.10.8/include/ -Iinclude/ -Iprotobuf_files/ -lpthread -lprotobuf -c -o a.o"
-    eval $build
-else
-    printf "\nBuilding...\n"
-    g++ -std=c++1y -Iasio-1.10.8/include/ -Iinclude/ -Iprotobuf_files -c -lpthread src/MIST.cpp -lprotobuf -o a.o
-fi
-
-printf "Exited with code $?\n"
+exitval=$?
+printf "Exited with code $exitval\n"
+exit $exitval

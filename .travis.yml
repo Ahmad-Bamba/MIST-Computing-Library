@@ -3,12 +3,14 @@ complier: g++
 sudo: required
 before-install:
     - chmod +x .build.sh
+    - chmod +x .protobuf_dl.sh
 addons:
     apt:
         sources:
             - ubuntu-toolchain-r-test
         packages:
-            - g++-4.9
+            - g++-5
+            - gcc-5
             - libboost-dev
             - libboost-system-dev
             - git
@@ -16,10 +18,11 @@ addons:
             - automake
             - libtool
             - curl
+            - cmake
             - make
             - unzip
 install:
-    - CC=gcc-4.9 CXX=g++-4.9
-script: ./.build.sh
+    - CC=gcc-5 CXX=g++-5
+script: travis_wait 30 ./.build.sh
 
 #what?
