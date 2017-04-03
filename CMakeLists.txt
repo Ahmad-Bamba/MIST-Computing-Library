@@ -9,6 +9,10 @@ include_directories(${CMAKE_SOURCE_DIR}/protobuf/src/)
 include_directories(${CMAKE_SOURCE_DIR}/asio-1.10.8/include/)
 include_directories(${CMAKE_SOURCE_DIR}/include/)
 
+IF(UNIX)
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+ENDIF(UNIX)
+
 add_definitions(-DASIO_STANDALONE)
 
 file(GLOB_RECURSE Mist_Files ${CMAKE_SOURCE_DIR}/include/*.hpp)
