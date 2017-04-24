@@ -4,14 +4,16 @@ project(Mist-Computing-Library CXX)
 set(CMAKE_CXX_STANDARD $ENV{cpp_vers})
 set(CMAKE_CXX_STANDARD_REQUIRED on)
 
+if(UNIX)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+endif(UNIX)
+
 include_directories(${CMAKE_SOURCE_DIR}/protobuf_files/)
 include_directories(${CMAKE_SOURCE_DIR}/protobuf/src/)
-include_directories(${CMAKE_SOURCE_DIR}/asio-1.10.8/include/)
+# include_directories(${CMAKE_SOURCE_DIR}/asio-1.10.8/include/)
 include_directories(${CMAKE_SOURCE_DIR}/include/)
 
-IF(UNIX)
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
-ENDIF(UNIX)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
 
 add_definitions(-DASIO_STANDALONE)
 

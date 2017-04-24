@@ -1,8 +1,10 @@
 #pragma once
 
+/*
+
 #include "SharedVariableBase.hpp"
-#include <networking/ReceiveData.hpp>
-#include <networking/SendData.hpp>
+#include <networking/Receive.hpp>
+#include <networking/Send.hpp>
 
 namespace MIST {
     class SharedDouble : public SharedVariableBase<double> {
@@ -18,7 +20,8 @@ namespace MIST {
         virtual void updateLocal(double &val) { _raw = &val; }
 
         virtual void update(double &val) {
-            /*Call updateLocal then broadcast the update signal to all computers on network*/
+            /*Call updateLocal then broadcast the update signal to all computers on network
         }
     };
 }
+*/

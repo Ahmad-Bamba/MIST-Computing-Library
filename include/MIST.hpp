@@ -1,6 +1,5 @@
 #pragma once
 
-#include "MIST_Internal.hpp"
 #include "Scheduler.hpp"
 #include "Task.hpp"
 
@@ -8,7 +7,6 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include <asio.hpp>
 #include <Machine.hpp>
 
 namespace MIST {
@@ -50,14 +48,14 @@ namespace MIST {
                     v.push_back(m);
                 }
             }
-
             machines = v;
         }
 
         Machine* get_local() { return local; }
 
-        void add_task(std::string id, MIST_taskfunc fn) {
-            scheduler->update_task_vector(id, fn);
+        template<typename ... P>
+        void add_task(std::string id, std::function<void(std::tuple<P...>)> fn, std::tuple<P...> args) {
+            scheduler->update_task_vector(id, fn, args);
         }
 
         void send_task(std::string serialized_task, std::string machine_name, short int port = 8008) {
@@ -67,5 +65,15 @@ namespace MIST {
                 }
             }
         }
+
+        void send_task(std::string serialized_task, Machine* other, short int port = 8008) {
+            for(auto machine : machines) {
+                if(&machine == other) {
+                    scheduler->send_task(serialized_task, machine, port);
+                }
+            }
+        }
+
+        std::vector<Machine> get_machines() { return machines; }
     };
 }

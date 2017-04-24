@@ -1,23 +1,43 @@
 #pragma once
 
 #include "SharedVariableBase.hpp"
-#include <networking/ReceiveData.hpp>
-#include <networking/SendData.hpp>
+#include <networking/Receive.hpp>
+#include <networking/Send.hpp>
 
 #include <string>
 
 namespace MIST {
     class SharedString : public SharedVariableBase<std::string> {
-    private:
-        std::string* _raw;
     public:
-        virtual ~SharedString() { delete _raw; }
+        SharedString(std::string val, MIST* op) : SharedVariableBase<std::string>(val, op) { };
 
-        SharedString(std::string val) { _raw = &val; }
+        SharedString& operator=(const std::string& other) {
+            *_raw = other;
+            return *this;
+        }
 
-        virtual std::string getValue() { return *_raw; }
-        virtual void copy(std::string &val) { val = *_raw; }
-        virtual void updateLocal(std::string &val) { _raw = &val; }
+        SharedString& operator=(SharedString& other) {
+            *_raw = other.get_value();
+            return *this;
+        }
+
+        SharedString& operator+=(std::string& other) {
+            *_raw += other;
+            return *this;
+        }
+
+        SharedString& operator+=(const char& other) {
+            _raw->push_back(other);
+            return *this;
+        }
+
+        char operator[](size_t i) {
+            return (*_raw)[i];
+        }
+
+        virtual void update_local(std::string &val) override {
+            _raw = &val;
+        }
 
         virtual void update(std::string &val) {
             /*Call updateLocal then broadcast the update signal to all computers on network*/

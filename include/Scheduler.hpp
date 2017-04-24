@@ -1,8 +1,7 @@
 #pragma once
 
-#include <MIST_Internal.hpp>
-#include <networking/ReceiveData.hpp>
-#include <networking/SendData.hpp>
+#include <networking/Receive.hpp>
+#include <networking/Send.hpp>
 #include <MIST.pb.h>
 #include <Task.hpp>
 #include <vector>
@@ -12,11 +11,11 @@
 
 class Scheduler {
 private:
-    std::vector<MIST::Task*> task_queue;
+    std::vector<MIST::TaskInterface*> task_queue;
     bool running = false;
     std::thread* checker;
 public:
-    Scheduler(std::vector<MIST::Task*> task_queue = {}) {
+    Scheduler(std::vector<MIST::TaskInterface*> task_queue = {}) {
         this->task_queue = task_queue;
         start();
     }
@@ -28,14 +27,15 @@ public:
         task_queue.empty();
     }
 
-    inline void update_task_vector(std::string id, MIST_taskfunc fn) {
-        task_queue.push_back(new MIST::Task(id, fn));
+    template<typename ... P>
+    inline void update_task_vector(std::string id, std::function<void(P...)> fn, std::tuple<P...> args) {
+        task_queue.push_back(new MIST::Task<P...>(id, fn, args));
     }
 
     inline void remove_task(std::string id) {
-        std::vector<MIST::Task*> copy = {};
+        std::vector<MIST::TaskInterface*> copy = {};
         for(auto t : task_queue) {
-            if(t->getID() != id) {
+            if(t->id != id) {
                 copy.push_back(t);
             }
         }
@@ -44,14 +44,15 @@ public:
 
     inline void check_for_tasks() {
         while(this->running) {
-            auto rdo = std::make_shared<ReceiveData>();
+            auto rdo = std::make_shared<ReceiveData>(8008);
             bool end = false;
             std::string message = "";
             auto parsed = std::make_shared<ProtobufMIST::Task>();
+            rdo->establish();
 
             while(!end) {
-                std::string x = rdo->receive<1>();
-                if( (x.find(MIST::Internal::delimiter) != std::string::npos) || x == "-1") {
+                std::string x = rdo->receive_chunk(1);
+                if( (x.find((char)185) != std::string::npos) || x == "") {
                     end = true;
                 } else {
                     message += x;
@@ -60,8 +61,8 @@ public:
 
             if(parsed->ParseFromString(message)) {
                 for(auto task : this->task_queue) {
-                    if(parsed->task_name() == task->getID()) {
-                        auto t = std::make_shared<std::thread>(&MIST::Task::run, task);
+                    if(parsed->task_name() == task->id) {
+                        auto t = std::make_shared<std::thread>(&MIST::TaskInterface::run, task);
                         t->join();
                         t = nullptr;
                     }
@@ -83,7 +84,7 @@ public:
     //run in new thread
     inline void run_task(std::string id) {
         for(auto task : this->task_queue) {
-            if(id == task->getID()) {
+            if(id == task->id) {
                 task->run();
             }
         }
@@ -94,8 +95,8 @@ public:
         std::vector<std::thread*> threads;
         for(auto id : ids) {
             for(auto task : task_queue) {
-                if(task->getID() == id) {
-                    threads.push_back(new std::thread(&MIST::Task::run, task));
+                if(task->id == id) {
+                    threads.push_back(new std::thread(&MIST::TaskInterface::run, task));
                 }
             }
         }
@@ -109,7 +110,9 @@ public:
 
     inline void send_task(std::string task, MIST::Machine machine, short int port) {
         SendData* sd = new SendData(machine.address, port);
-        sd->send(task, (char)182);
+        sd->establish();
+        task += (char)182;
+        sd->send_string(task);
         delete sd;
     }
 
