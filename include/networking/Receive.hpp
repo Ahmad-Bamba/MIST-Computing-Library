@@ -3,10 +3,14 @@
 #include <string>
 #include <iostream>
 #include <tuple>
-#include <cassert>
 #include <sstream>
+#include "MistAssert.hpp"
 
-#ifndef WIN32
+#define MAX_LISTEN_CONNECTIONS 5
+#define RECEIVE_PORT 0
+#define RECEIVE_SOCK 1
+
+#ifndef _WIN32
 
 #include <sys/socket.h>
 #include <arpa/inet.h>
@@ -26,15 +30,10 @@ public:
         m_address.sin_port = htons(m_port);
         m_address.sin_addr.s_addr = INADDR_ANY;
 
-        std::stringstream ss;
-        ss << "Receive.h: Failed to open socket at line " << __LINE__ << std::endl;
-        assert(m_sock >= 0 && ss.str().c_str());
+        mistassert(m_sock >= 0, "Receive.hpp: failed to open socket!"));
     }
 
-    ReceiveData(const ReceiveData& from) = delete;
-    ReceiveData(ReceiveData&& move) = delete;
-
-    inline bool establish() {
+    bool establish() {
         if (bind(m_sock, (struct sockaddr *) &m_address, sizeof(m_address)) < 0) {
             std::cerr << "Receive.h: failed to bind port at line " << __LINE__ << std::endl;
             return true;
@@ -43,7 +42,7 @@ public:
         return false;
     }
 
-    inline std::string receive_chunk(size_t size) {
+    std::string receive_chunk(size_t size) {
         char* buffer = new char[size];
 
         unsigned int len = sizeof(m_client);
@@ -58,7 +57,7 @@ public:
         return s;
     }
 
-    inline auto get_info() {
+    auto get_info() {
         return std::tuple<unsigned short, int>(m_port, m_sock);
     }
 };
@@ -74,86 +73,108 @@ public:
 #include <ws2tcpip.h>
 #include <iphlpapi.h>
 
+#pragma comment(lib, "Ws2_32.lib")
+
 #include <memory>
-#include <exception>
 #include <string>
 
+#define _CRT_SECURE_NO_WARNINGS
+
+// TODO: connection actively refused
 class ReceiveData {
-    short m_port;
-    std::unique_ptr<WSADATA> m_wsa_data { nullptr };
-    // The pointer ruse was a distaction
-    addrinfo* m_result;
-    std::unique_ptr<addrinfo> m_ptr { nullptr };
-    addrinfo m_hints { }; //TODO make sure this actually works
+    unsigned short m_port;
+	const char* m_port_str;
     SOCKET m_sock;
+	WSADATA m_wsa_data;
+	addrinfo* m_result { nullptr };
+	addrinfo* m_ptr { nullptr };
+	addrinfo m_hints;
 public:
     ReceiveData(const unsigned short& port) {
-        m_port = port;
+		m_port = port;
+		m_port_str = std::to_string(m_port).c_str();
 
-        std::stringstream ss;
-        ss << "Receive.h: Failed to open socket at line " << __LINE__ << std::endl;
-        assert(WSAStartup(MAKEWORD(2, 2), m_wsa_data.get()) != 0 && ss.str().c_str());
+		int err = WSAStartup(MAKEWORD(2, 2), &m_wsa_data);
+		char* err_buf = new char[252];
+		sprintf(err_buf, "Error %d on WSAStartup!", err);
+		mistassert(err == 0, err_buf);
 
-        m_hints.ai_family = AF_INET;
-        m_hints.ai_socktype = SOCK_STREAM;
-        m_hints.ai_protocol = IPPROTO_TCP;
-        m_hints.ai_flags = AI_PASSIVE;
+		ZeroMemory(&m_hints, sizeof(m_hints));
+		m_hints.ai_family = AF_INET;
+		m_hints.ai_socktype = SOCK_STREAM;
+		m_hints.ai_protocol = IPPROTO_TCP;
+		m_hints.ai_flags = AI_PASSIVE;
 
-        if(getaddrinfo(nullptr, std::to_string(m_port).c_str(), &m_hints, &m_result) != 0) {
-            std::cerr << "getadderinfo failed at line " << __LINE__ << std::endl;
-            WSACleanup();
-            std::terminate();
-        }
-
-        m_sock = INVALID_SOCKET;
-        m_sock = socket(m_result->ai_family, m_result->ai_socktype, m_result->ai_protocol);
-    }
-    ReceiveData(const ReceiveData& from) = delete;
-    ReceiveData(ReceiveData&& move) = delete;
-    ~ReceiveData() {
-        if(m_result != nullptr)
-            delete m_result;
-        WSACleanup();
+		int result = getaddrinfo(NULL, m_port_str, &m_hints, &m_result);
+		char* res_buf = new char[252];
+		sprintf(res_buf, "Error %d on getaddrinfo!", result);
+		mistassert(result == 0, res_buf);
     }
 
-    inline bool establish() {
-        if(bind(m_sock, m_result->ai_addr, static_cast<int>(m_result->ai_addrlen)) == SOCKET_ERROR) {
-            std::cerr << "Receive.h: bind failed with error " << WSAGetLastError() << " at line " << __LINE__ << std::endl;
-            closesocket(m_sock);
-            return true;
-        }
-        if (listen(m_sock, 5) == SOCKET_ERROR) {
-            std::cerr << "Receive.h: listen failed with error " << WSAGetLastError() << " at line " << __LINE__ << std::endl;
-            closesocket(m_sock);
-            return true;
-        }
-        delete m_result;
+    bool establish() {
+		m_sock = INVALID_SOCKET;
+		m_sock = socket(m_result->ai_family, m_result->ai_socktype, m_result->ai_protocol);
+		if (m_sock == INVALID_SOCKET) {
+			std::cerr << "Invalid socket on line " << __LINE__ << " of Receive.hpp" << std::endl;
+			freeaddrinfo(m_result);
+			WSACleanup();
+			return true;
+		}
+
+		int result = bind(m_sock, m_result->ai_addr, static_cast<int>(m_result->ai_addrlen));
+		if (result == SOCKET_ERROR) {
+			std::cerr << "Receive.hpp: Failed to bind to socket at line " << __LINE__ << std::endl;
+			freeaddrinfo(m_result);
+			closesocket(m_sock);
+			WSACleanup();
+			return true;
+		}
+
+		if (listen(m_sock, MAX_LISTEN_CONNECTIONS) == SOCKET_ERROR) {
+			std::cerr << "Receive.hpp: Listen failed with error: " << WSAGetLastError() << std::endl;
+			closesocket(m_sock);
+			WSACleanup();
+			return true;
+		}
         return false;
     }
 
-    inline std::string receive_chunk(size_t size) {
-        char* buffer = new char[size];
-        SOCKET client;
-        client = accept(client, nullptr, nullptr);
-        if(client == INVALID_SOCKET) {
-            std::cerr << "Receive.h: accept failed with error " << WSAGetLastError() << " at line " << __LINE__ << std::endl;
-            closesocket(m_sock);
-            return "";
-        }
-        int i;
-        std::string ret;
-        //accept until connection closes
-        do {
-            i = recv(client, buffer, size, 0);
-            if(i > 0)
-                ret = std::string(buffer);
-        } while(i > 0);
-        return ret;
+    std::string receive_chunk(size_t size) {
+		SOCKET cli;
+		cli = INVALID_SOCKET;
+		cli = accept(m_sock, NULL, NULL);
+		if (cli == INVALID_SOCKET) {
+			std::cerr << "Receive.hpp: Accept failed: " << WSAGetLastError() << std::endl;
+			closesocket(m_sock);
+			WSACleanup();
+			return "";
+		}
+
+		char* buf = new char[size];
+		int result;
+		do {
+			result = recv(cli, buf, static_cast<int>(size), 0);
+			if (result < 0) {
+				std::cerr << "Receive.hpp: Receive failed! " << WSAGetLastError() << std::endl;
+				closesocket(cli);
+				WSACleanup();
+				buf = "";
+			}
+		} while (result > 0);
+
+		result = shutdown(cli, SD_SEND);
+		if (result == SOCKET_ERROR) {
+			std::cerr << "Receive.hpp: Unclean disconnect! " << WSAGetLastError() << std::endl;
+			closesocket(cli);
+			WSACleanup();
+		}
+
+		return std::string(buf);
     }
 
-    inline auto get_info() {
+    auto get_info() {
         return std::tuple<unsigned short, int>(m_port, m_sock);
     }
 };
 
-#endif // WIN32
+#endif // _WIN32
