@@ -5,3 +5,4 @@
 #include "networking/Receive.hpp"
 #include "networking/Send.hpp"
 #include "shared_variable/SharedVariable.hpp"
+#include "Algorithm.hpp"
