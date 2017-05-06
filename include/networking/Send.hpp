@@ -24,7 +24,7 @@ private:
     int m_sock;
     sockaddr_in m_address;
 
-    inline bool send(const char* raw, size_t size) {
+    bool send(const char* raw, size_t size) {
         const char* buffer = new char[size];
         buffer = raw;
         if(write(m_sock, buffer, size + 1) < 0) {
@@ -45,7 +45,7 @@ public:
         m_address.sin_family = AF_INET;
         m_address.sin_port = htons(m_port);
 
-		mistassert(inet_pton(AF_INET, m_ip.c_str(), &m_address.sin_addr), "Send.hpp: Error getting set hostname (inet_pton)");
+        mistassert(inet_pton(AF_INET, m_ip.c_str(), &m_address.sin_addr), "Send.hpp: Error getting set hostname (inet_pton)");
     }
 
     bool establish() {
@@ -89,71 +89,71 @@ private:
     unsigned short m_port;
     const char* m_port_str;
     std::string m_ip;
-	WSADATA m_wsa_data;
+    WSADATA m_wsa_data;
     SOCKET m_sock;
-	addrinfo* m_result { nullptr };
-	addrinfo* m_ptr { nullptr };
-	addrinfo m_hints;
+    addrinfo* m_result { nullptr };
+    addrinfo* m_ptr { nullptr };
+    addrinfo m_hints;
 public:
     SendData(const std::string& ip, const unsigned short& port) {
-		m_ip = ip;
-		m_port = port;
-		m_port_str = std::to_string(m_port).c_str();
+        m_ip = ip;
+        m_port = port;
+        m_port_str = std::to_string(m_port).c_str();
 
-		int err = WSAStartup(MAKEWORD(2, 2), &m_wsa_data);
-		char* err_buf = new char[252];
-		sprintf(err_buf, "Send.hpp: WSAStartup failed! %d", err);
-		mistassert(err == 0, err_buf);
+        int err = WSAStartup(MAKEWORD(2, 2), &m_wsa_data);
+        char* err_buf = new char[252];
+        sprintf(err_buf, "Send.hpp: WSAStartup failed! %d", err);
+        mistassert(err == 0, err_buf);
 
-		ZeroMemory(&m_hints, sizeof(m_hints));
-		m_hints.ai_family = AF_UNSPEC;
-		m_hints.ai_socktype = SOCK_STREAM;
-		m_hints.ai_protocol = IPPROTO_TCP;
+        ZeroMemory(&m_hints, sizeof(m_hints));
+        m_hints.ai_family = AF_UNSPEC;
+        m_hints.ai_socktype = SOCK_STREAM;
+        m_hints.ai_protocol = IPPROTO_TCP;
 
-		int result = getaddrinfo(ip.c_str(), m_port_str, &m_hints, &m_result);
-		char* res_buf = new char[252];
-		sprintf(res_buf, "Send.hpp: getaddrinfo failed! %d", result);
-		mistassert(result == 0, res_buf);
+        int result = getaddrinfo(ip.c_str(), m_port_str, &m_hints, &m_result);
+        char* res_buf = new char[252];
+        sprintf(res_buf, "Send.hpp: getaddrinfo failed! %d", result);
+        mistassert(result == 0, res_buf);
     }
 
     bool establish() {
-		m_sock = INVALID_SOCKET;
-		m_ptr = m_result;
-		m_sock = socket(m_ptr->ai_family, m_ptr->ai_socktype, m_ptr->ai_protocol);
+        m_sock = INVALID_SOCKET;
+        m_ptr = m_result;
+        m_sock = socket(m_ptr->ai_family, m_ptr->ai_socktype, m_ptr->ai_protocol);
 
-		if (m_sock == INVALID_SOCKET) {
-			std::cerr << "Send.hpp: Error creating socket %ld" << WSAGetLastError() << std::endl;
-			freeaddrinfo(m_result);
-			WSACleanup();
-			return true;
-		}
+        if (m_sock == INVALID_SOCKET) {
+            std::cerr << "Send.hpp: Error creating socket %ld" << WSAGetLastError() << std::endl;
+            freeaddrinfo(m_result);
+            WSACleanup();
+            return true;
+        }
 
-		int result = connect(m_sock, m_ptr->ai_addr, static_cast<int>(m_ptr->ai_addrlen));
-		if (result == SOCKET_ERROR) {
-			closesocket(m_sock);
-			m_sock = INVALID_SOCKET;
-		}
+        int result = connect(m_sock, m_ptr->ai_addr, static_cast<int>(m_ptr->ai_addrlen));
+        if (result == SOCKET_ERROR) {
+            closesocket(m_sock);
+            m_sock = INVALID_SOCKET;
+        }
 
-		freeaddrinfo(m_result);
+        freeaddrinfo(m_result);
 
 
-		if (m_sock == INVALID_SOCKET) {
-			WSACleanup();
-			mistassert(false, "Send.hpp: Unable to connect to server!");
-		}
-		
+        if (m_sock == INVALID_SOCKET) {
+            WSACleanup();
+            mistassert(false, "Send.hpp: Unable to connect to server!");
+        }
+        
         return false;
     }
 
     bool send_string(std::string data) {
-		const char* buf = data.c_str();
-		int result = send(m_sock, buf, static_cast<int>(data.size()), 0);
-		if (result == SOCKET_ERROR) {
-			std::cerr << "Send.hpp: send failed " << WSAGetLastError() << std::endl;
-			WSACleanup();
-			closesocket(m_sock);
-			return true;
-		}
+        const char* buf = data.c_str();
+        int result = send(m_sock, buf, static_cast<int>(data.size()), 0);
+        if (result == SOCKET_ERROR) {
+            std::cerr << "Send.hpp: send failed " << WSAGetLastError() << std::endl;
+            WSACleanup();
+            closesocket(m_sock);
+            return true;
+        }
         return false;
     }
 

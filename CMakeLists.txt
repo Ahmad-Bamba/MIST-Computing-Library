@@ -18,6 +18,7 @@ include_directories(${CMAKE_SOURCE_DIR}/protobuf_files/)
 include_directories(${CMAKE_SOURCE_DIR}/include/)
 
 # add_definitions(-DASIO_STANDALONE)
+add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
 file(GLOB_RECURSE Mist_Files ${CMAKE_SOURCE_DIR}/include/*.hpp)
 file(GLOB_RECURSE Protobuf_Files ${CMAKE_SOURCE_DIR}/protobuf_files/*.pb.cc)
