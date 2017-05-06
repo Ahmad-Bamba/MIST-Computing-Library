@@ -30,7 +30,7 @@ public:
         m_address.sin_port = htons(m_port);
         m_address.sin_addr.s_addr = INADDR_ANY;
 
-        mistassert(m_sock >= 0, "Receive.hpp: failed to open socket!"));
+        mistassert(m_sock >= 0, "Receive.hpp: failed to open socket!");
     }
 
     bool establish() {
