@@ -68,8 +68,6 @@ public:
 #define WIN32_LEAN_AND_MEAN
 #endif
 
-#define _CRT_SECURE_NO_WARNINGS
-
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -85,6 +83,7 @@ class ReceiveData {
     unsigned short m_port;
     const char* m_port_str;
     SOCKET m_sock;
+    SOCKET m_cli;
     WSADATA m_wsa_data;
     addrinfo* m_result { nullptr };
     addrinfo* m_ptr { nullptr };
@@ -95,7 +94,7 @@ public:
         m_port_str = std::to_string(m_port).c_str();
 
         int err = WSAStartup(MAKEWORD(2, 2), &m_wsa_data);
-        char* err_buf = new char[252];
+        char* err_buf = new char[128];
         sprintf(err_buf, "Error %d on WSAStartup!", err);
         mistassert(err == 0, err_buf);
 
@@ -106,9 +105,19 @@ public:
         m_hints.ai_flags = AI_PASSIVE;
 
         int result = getaddrinfo(NULL, m_port_str, &m_hints, &m_result);
-        char* res_buf = new char[252];
+        char* res_buf = new char[128];
         sprintf(res_buf, "Error %d on getaddrinfo!", result);
         mistassert(result == 0, res_buf);
+    }
+
+    //cleanly close connection
+    ~ReceiveData() noexcept {
+        int result = shutdown(m_cli, SD_SEND);
+        if (result == SOCKET_ERROR) {
+            std::cerr << "Receive.hpp: Unclean disconnect! " << WSAGetLastError() << std::endl;
+            closesocket(m_cli);
+            WSACleanup();
+        }
     }
 
     bool establish() {
@@ -140,10 +149,9 @@ public:
     }
 
     std::string receive_chunk(size_t size) {
-        SOCKET cli;
-        cli = INVALID_SOCKET;
-        cli = accept(m_sock, NULL, NULL);
-        if (cli == INVALID_SOCKET) {
+        m_cli = INVALID_SOCKET;
+        m_cli = accept(m_sock, NULL, NULL);
+        if (m_cli == INVALID_SOCKET) {
             std::cerr << "Receive.hpp: Accept failed: " << WSAGetLastError() << std::endl;
             closesocket(m_sock);
             WSACleanup();
@@ -152,21 +160,12 @@ public:
 
         char* buf = new char[size];
         int result;
-        do {
-            result = recv(cli, buf, static_cast<int>(size), 0);
-            if (result < 0) {
-                std::cerr << "Receive.hpp: Receive failed! " << WSAGetLastError() << std::endl;
-                closesocket(cli);
-                WSACleanup();
-                buf = "";
-            }
-        } while (result > 0);
-
-        result = shutdown(cli, SD_SEND);
-        if (result == SOCKET_ERROR) {
-            std::cerr << "Receive.hpp: Unclean disconnect! " << WSAGetLastError() << std::endl;
-            closesocket(cli);
+        result = recv(m_cli, buf, static_cast<int>(size), 0);
+        if (result < 0) {
+            std::cerr << "Receive.hpp: Receive failed! " << WSAGetLastError() << std::endl;
+            closesocket(m_cli);
             WSACleanup();
+            buf = "";
         }
 
         return std::string(buf);

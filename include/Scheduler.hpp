@@ -6,8 +6,11 @@
 #include <Task.hpp>
 #include <vector>
 #include <memory>
+#include <algorithm>
 #include <thread>
 #include <Machine.hpp>
+
+#define MIST_DEFAULT_PORT 8008
 
 class Scheduler {
 private:
@@ -20,7 +23,7 @@ public:
         start();
     }
 
-    ~Scheduler() {
+    ~Scheduler() noexcept {
         //Make sure threads are close
         stop();
         //empty task_queue to prevent evil raw pointers from ruining program
@@ -28,30 +31,39 @@ public:
     }
 
     template<typename ... P>
-    inline void update_task_vector(std::string id, std::function<void(P...)> fn, std::tuple<P...> args) {
+    void update_task_vector(std::string id, std::function<void(std::tuple<P...>)> fn, std::tuple<P...> args) {
         task_queue.push_back(new MIST::Task<P...>(id, fn, args));
     }
 
-    inline void remove_task(std::string id) {
-        std::vector<MIST::TaskInterface*> copy = {};
-        for(auto t : task_queue) {
-            if(t->id != id) {
-                copy.push_back(t);
+    void remove_task(std::string id) {
+        MIST::TaskInterface* to_remove = nullptr;
+        for (auto& task : task_queue) {
+            if (task->id == id) {
+                to_remove = task;
+                break;
             }
         }
+        remove_task(to_remove);
+    }
+
+    void remove_task(MIST::TaskInterface* to_remove) {
+        std::vector<MIST::TaskInterface*> copy(task_queue.size() - 1);
+        std::copy_if(task_queue.begin(), task_queue.end(), copy.end(), [&to_remove](MIST::TaskInterface* t) { 
+            return to_remove != t;
+        });
         task_queue = copy;
     }
 
-    inline void check_for_tasks() {
+    void check_for_tasks() {
         while(this->running) {
-            auto rdo = std::make_shared<ReceiveData>(8008);
+            ReceiveData rdo(MIST_DEFAULT_PORT);
             bool end = false;
             std::string message = "";
-            auto parsed = std::make_shared<ProtobufMIST::Task>();
-            rdo->establish();
+            ProtobufMIST::Task parsed;
+            rdo.establish();
 
             while(!end) {
-                std::string x = rdo->receive_chunk(1);
+                std::string x = rdo.receive_chunk(1);
                 if( (x.find((char)185) != std::string::npos) || x == "") {
                     end = true;
                 } else {
@@ -59,24 +71,22 @@ public:
                 }
             }
 
-            if(parsed->ParseFromString(message)) {
-                for(auto task : this->task_queue) {
-                    if(parsed->task_name() == task->id) {
-                        auto t = std::make_shared<std::thread>(&MIST::TaskInterface::run, task);
-                        t->join();
-                        t = nullptr;
+            if(parsed.ParseFromString(message)) {
+                for(const auto& task : this->task_queue) {
+                    if(parsed.task_name() == task->id) {
+                        std::thread t = std::thread(&MIST::TaskInterface::run, task);
+                        t.join();
+                        break;
                     }
                 }
-            } else {
+            } /*else {
                 std::cout << "Warning: Could not parse message as task. "
                              "This does not necessarily mean something has gone wrong.\n";
-            }
-            rdo = nullptr;
-            parsed = nullptr;
+            }*/
         }
     }
 
-    inline void start() {
+    void start() {
         this->running = true;
         this->checker = new std::thread(&Scheduler::check_for_tasks, this);
     }
@@ -91,7 +101,7 @@ public:
     }
 
     //run all specified tasks concurrently
-    inline void run_task(std::vector<std::string> ids) {
+    void run_task(std::vector<std::string> ids) {
         std::vector<std::thread*> threads;
         for(auto id : ids) {
             for(auto task : task_queue) {
@@ -101,22 +111,20 @@ public:
             }
         }
 
-        for(auto thread : threads) {
+        for(auto thread : threads)
             thread->join();
-        }
 
         threads.empty();
     }
 
-    inline void send_task(std::string task, MIST::Machine machine, short int port) {
-        SendData* sd = new SendData(machine.address, port);
-        sd->establish();
+    void send_task(std::string task, MIST::Machine machine, short int port) {
+        SendData sd(machine.address, port);
+        sd.establish();
         task += (char)182;
-        sd->send_string(task);
-        delete sd;
+        sd.send_string(task);
     }
 
-    inline void stop() {
+    void stop() {
         this->running = false;
         delete checker;
     }

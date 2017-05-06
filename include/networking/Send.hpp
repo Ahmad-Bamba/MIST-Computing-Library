@@ -71,8 +71,6 @@ public:
 #define WIN32_LEAN_AND_MEAN
 #endif
 
-#define _CRT_SECURE_NO_WARNINGS
-
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -101,7 +99,7 @@ public:
         m_port_str = std::to_string(m_port).c_str();
 
         int err = WSAStartup(MAKEWORD(2, 2), &m_wsa_data);
-        char* err_buf = new char[252];
+        char* err_buf = new char[128];
         sprintf(err_buf, "Send.hpp: WSAStartup failed! %d", err);
         mistassert(err == 0, err_buf);
 
@@ -111,7 +109,7 @@ public:
         m_hints.ai_protocol = IPPROTO_TCP;
 
         int result = getaddrinfo(ip.c_str(), m_port_str, &m_hints, &m_result);
-        char* res_buf = new char[252];
+        char* res_buf = new char[128];
         sprintf(res_buf, "Send.hpp: getaddrinfo failed! %d", result);
         mistassert(result == 0, res_buf);
     }

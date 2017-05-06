@@ -10,6 +10,13 @@ namespace MIST {
         ASYNC,
     };
 
+    enum class AlgorithmMode {
+        SOLO,
+        EVEN,
+        MEM_BIAS,
+        THR_BIAS,
+    };
+
     class Algorithm {
     protected:
         std::vector<std::tuple<std::string, TaskRunType>> m_to_run;
