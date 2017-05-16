@@ -30,6 +30,6 @@ namespace MIST {
             m_to_run.push_back(std::make_tuple(name, TaskRunType::ASYNC));
         }
 
-        auto get_tasks() { return m_to_run; }
+        const auto& get_tasks() { return m_to_run; }
     };
 }

@@ -21,10 +21,10 @@ include_directories(${CMAKE_SOURCE_DIR}/include/)
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
 file(GLOB_RECURSE Mist_Files ${CMAKE_SOURCE_DIR}/include/*.hpp)
-file(GLOB_RECURSE Protobuf_Files ${CMAKE_SOURCE_DIR}/protobuf_files/*.pb.cc)
 
 add_library(MistComputingLibrary SHARED ${Mist_files} src/MIST.cpp)
 add_library(MistComputingLibraryStatic STATIC ${Mist_files} src/MIST.cpp)
+
 
 set_target_properties(MistComputingLibrary PROPERTIES OUTPUT_NAME Mist)
 set_target_properties(MistComputingLibraryStatic PROPERTIES OUTPUT_NAME MistStatic)

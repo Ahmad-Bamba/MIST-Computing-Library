@@ -12,16 +12,11 @@
 namespace MIST {
     struct TaskInterface {
         virtual void run() = 0;
-        std::string id;
-
-        TaskInterface(std::string id) {
-            this->id = id;
-        }
     };
 
     template<class ... P>
     struct Task: public TaskInterface {
-        Task(std::string id, std::function<std::tuple<P...>> fn, std::tuple<P...> args) : TaskInterface(id) {
+        Task(std::function<void(std::tuple<P...>)> fn, std::tuple<P...> args) : TaskInterface() {
             task_params = args;
             task_func = fn;
         };

@@ -39,7 +39,7 @@ namespace MIST {
             _raw = &val;
         }
 
-        virtual void update(std::string &val) {
+        virtual void update(std::string &val) override {
             /*Call updateLocal then broadcast the update signal to all computers on network*/
         }
     };
