@@ -1,7 +1,8 @@
 #pragma once
 
-#include <MIST_Internal.hpp>
 #include <string>
+#include <functional>
+#include <tuple>
 
 /*
  * Tasks are to be defined locally. Pass a function you want to run when an
@@ -9,32 +10,21 @@
  */
 
 namespace MIST {
-    class Task {
+    struct TaskInterface {
+        virtual void run() = 0;
+    };
+
+    template<class ... P>
+    struct Task: public TaskInterface {
+        Task(std::function<void(std::tuple<P...>)> fn, std::tuple<P...> args) : TaskInterface() {
+            task_params = args;
+            task_func = fn;
+        };
+        void run() override final {
+            task_func(task_params);
+        }
     private:
-        std::string id;
-        MIST_taskfunc fn;
-
-    public:
-        Task(std::string id, MIST_taskfunc fn) {
-            this->id = id;
-            this->fn = fn;
-        }
-
-        ~Task() {
-            id.clear();
-            //delete (void*)fn;
-        }
-
-        std::string getID() {
-            return id;
-        }
-
-        MIST_taskfunc getTaskFunc() {
-            return fn;
-        }
-
-        void run() {
-            fn();
-        }
+        std::function<void(std::tuple<P...>)> task_func;
+        std::tuple<P...> task_params;
     };
 } /* MIST */
